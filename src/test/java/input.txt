@@ -1,0 +1,101 @@
+turn 0
+loadtime 3000
+turntime 1000
+rows 17
+cols 19
+turns 30
+viewradius2 77
+attackradius2 5
+spawnradius2 1
+player_seed 42
+ready
+turn 1
+w 0 18
+w 1 0
+w 1 1
+w 1 2
+w 1 3
+w 1 4
+w 1 5
+w 1 6
+w 1 7
+w 1 8
+w 1 9
+w 1 10
+w 1 11
+w 1 12
+w 1 13
+w 1 14
+w 1 15
+w 1 16
+w 1 17
+w 2 17
+w 2 18
+w 3 0
+w 3 3
+w 3 7
+w 3 16
+w 4 4
+w 4 5
+w 4 6
+w 4 17
+w 4 18
+w 5 3
+w 5 5
+w 5 7
+w 8 0
+w 8 1
+w 8 2
+w 8 3
+w 8 4
+w 8 5
+w 8 6
+w 8 12
+w 8 13
+w 8 14
+w 8 15
+w 8 17
+w 8 18
+w 9 6
+w 9 12
+w 10 6
+w 11 6
+w 12 6
+w 12 12
+w 13 6
+w 13 12
+w 14 5
+w 14 6
+w 14 8
+w 14 9
+w 14 10
+w 14 11
+w 14 12
+w 16 0
+w 16 1
+w 16 2
+w 16 3
+w 16 4
+w 16 5
+w 16 6
+w 16 7
+w 16 8
+w 16 9
+w 16 10
+w 16 11
+w 16 12
+w 16 13
+w 16 14
+w 16 15
+w 16 16
+w 16 17
+w 16 18
+h 1 18 0
+h 3 5 0
+h 3 18 0
+h 15 5 1
+a 1 18 0
+a 3 5 0
+a 3 18 0
+a 15 5 1
+go

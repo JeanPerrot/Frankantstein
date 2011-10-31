@@ -1,0 +1,1 @@
+tools/playgame.py --engine_seed 42 --player_seed 42 --food none --end_wait=0.25 --verbose --log_dir game_logs --turns 30 --map_file tools/submission_test/test.map  "java -jar build/libs/MyBot.jar" "python tools/submission_test/TestBot.py" -e --strict --capture_errors -E -I -O -v -o

@@ -1,0 +1,9 @@
+This starter package zip was published on Sat Oct 29 21:05:45 UTC 2011.
+
+Last change on this starter package was:
+commit cba9cb1fead8b01971bd9ce3e2eac0d1c7b65df0
+Date:   Tue Oct 25 22:43:12 2011 +0400
+
+    java starter bot: fix clearing map
+
+Check https://github.com/aichallenge/aichallenge/tree/epsilon/ants/dist/starter_bots/java for new versions.
