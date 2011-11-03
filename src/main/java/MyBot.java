@@ -1,7 +1,10 @@
 import ants.Ants;
 import ants.Tile;
 import map.AntMap;
+import map.CostMap;
 import subsume.Ant;
+import subsume.Print;
+import subsume.TurnCount;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +20,6 @@ public class MyBot extends Bot {
     AntMap nextTurn = new AntMap();
     AntMap thisTurn;
     Ants gameState;
-    int turn = 0;
 
 
     /**
@@ -36,7 +38,9 @@ public class MyBot extends Bot {
      */
     @Override
     public void doTurn() {
-        turn++;
+        CostMap.clearTurn();
+        TurnCount.count++;
+        Print.println("turn " + TurnCount.count);
         gameState = getAnts();
         gameState.markVisionExplored();
 
@@ -78,4 +82,5 @@ public class MyBot extends Bot {
         }
         return retValue;
     }
+
 }

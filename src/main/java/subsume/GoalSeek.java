@@ -16,24 +16,35 @@ public abstract class GoalSeek extends Layer {
     }
 
     @Override
-    public Aim output() {
+    public Decision output() {
         pickGoals();
-//        if (goal==null){
-        goal = evaluateAllGoals();
-//        }
+        if (goal == null) {
+            goal = evaluateAllGoals();
+        }
         if (goal != null) {
+            assign(ant,goal);
             //is there a way to get to it?
             Aim direction = aimAt(goal);
-            if (aimAt(goal) != null) {
-                return direction;
+            if (direction != null) {
+                return Decision.move(direction);
             }
         }
-        return null;
+        return Decision.DONTKNOW;
+    }
+
+    protected abstract void assign(Ant ant, Tile goal);
+
+    @Override
+    public String explain() {
+        return lastDecision + " for GOALS: " + potentialGoals;
     }
 
     protected abstract void pickGoals();
 
     protected Tile evaluateAllGoals() {
+        if (potentialGoals.size()==1){
+            return potentialGoals.get(0);
+        }
         int minCost = Integer.MAX_VALUE;
         Tile bestGoal = null;
         for (Tile goal : potentialGoals) {

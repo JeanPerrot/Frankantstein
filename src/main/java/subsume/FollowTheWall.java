@@ -16,21 +16,26 @@ public class FollowTheWall extends Layer {
     }
 
     @Override
-    public Aim output() {
+    public Decision output() {
 
         following = amIFollowing();
 
         if (!following) {
             //just go until we hit the wall.
             if (passes(ant.tile, previousDirection)) {
-                return previousDirection;
+                return Decision.move(previousDirection);
             }
 
             startFollowing();
         }
         previousDirection = followOn();
-        return previousDirection;
+        return Decision.move(previousDirection);
 
+    }
+
+    @Override
+    public String explain() {
+        return "";
     }
 
     private boolean amIFollowing() {

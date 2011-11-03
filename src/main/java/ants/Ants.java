@@ -514,4 +514,32 @@ public class Ants {
     public WorldMap getMap() {
         return map;
     }
+
+    public Set<Tile> visibleEnemies(Tile from) {
+        Set<Tile> retValue = new HashSet<Tile>();
+        for (Tile offset : visionOffsets) {
+            Tile seeing = getTile(from, offset);
+            if (getIlk(seeing).equals(Ilk.ENEMY_ANT)) {
+                retValue.add(seeing);
+            }
+        }
+        return retValue;
+    }
+
+    public Tile closest(Tile from, Collection<Tile> tiles) {
+        Tile retValue = null;
+        int distance = Integer.MAX_VALUE;
+        for (Tile tile : tiles) {
+            int testDistance = getDistance(tile, from);
+            if (testDistance < distance) {
+                retValue = tile;
+                distance = testDistance;
+            }
+        }
+        return retValue;
+    }
+
+    public Set<Tile> getVisionOffsets() {
+        return visionOffsets;
+    }
 }

@@ -8,37 +8,65 @@ import map.WorldMap;
 import java.util.*;
 
 public class AStar {
+    private static int counts = 0;
 
     private WorldMap map;
     private Ants ants;
+    private HeuristicCost heuristicCost;
+    private EndCondition endCondition;
 
     private SortedMap<Integer, Collection<Path>> frontier = new TreeMap<Integer, Collection<Path>>();
     private Map<Tile, Tile> cameFrom = new HashMap<Tile, Tile>();
     private Set<Tile> visited = new HashSet<Tile>();
 
-    private int costLimit = 50;
+    private int costLimit = 100;
+
+    public static Aim firstStep(Ants ants, Tile start, Tile goal) {
+        AStar.AppraisedPath path = new AStar(ants.getMap(), ants).findPath(start, goal);
+        if (path == null) {
+            return null;
+        }
+        List<Aim> paths = path.path;
+        if (paths.size() == 0) {
+            return null;
+        }
+        return (paths.get(0));
+    }
 
     public AStar(WorldMap map, Ants ants) {
         this.map = map;
         this.ants = ants;
     }
 
+    public AppraisedPath findPath(Tile start, Tile goal) {
+        heuristicCost = getGoalHeuristics(goal);
+        endCondition = getGoalEndCondition(goal);
+        return findPath(start);
+    }
 
     /**
-     * returns null if not successful
+     * returns an AppraisedPath with goalReached=false if not successful
      */
-    public AppraisedPath findPath(Tile start, Tile goal) {
+    private AppraisedPath findPath(Tile start) {
+//        Print.println("AStar used " + counts++);
         clear();
-        addToFrontier(new Path(start, 0, heuristicCost(start, goal)));
+        addToFrontier(new Path(start, 0, heuristicCost(start)));
 
         while (!frontier.isEmpty()) {
             Path lowestScore = getLowestScoreFrontier();
             if (lowestScore.fScore() > costLimit) {
-                return null;
-            }
-            if (lowestScore.tile.equals(goal)) {
                 List<Tile> path = reconstructPath(lowestScore.tile);
-                return new AppraisedPath(toAim(path), lowestScore.fScore());
+                if (path.size() == 1) {
+                    return null;
+                }
+                return new AppraisedPath(toAim(path), lowestScore.fScore(), false);
+            }
+            if (endCondition.goalReached(lowestScore.tile)) {
+                List<Tile> path = reconstructPath(lowestScore.tile);
+                if (path.size() == 1) {
+                    return null;
+                }
+                return new AppraisedPath(toAim(path), lowestScore.fScore(), true);
             }
             removeFromFrontier(lowestScore);
             visited.add(lowestScore.tile);
@@ -50,7 +78,7 @@ public class AStar {
                 }
                 boolean improved = true;
                 int knownCost = score(tile) + lowestScore.knownCost;
-                int heuristicCost = heuristicCost(tile, goal);
+                int heuristicCost = heuristicCost(tile);
                 int tentativeCost = heuristicCost + knownCost;
 
                 Path alreadyInFrontier = getInFrontier(tile);
@@ -72,9 +100,9 @@ public class AStar {
     }
 
     private int frontierSize() {
-        int count=0;
-        for (Collection<Path>paths:frontier.values()){
-            count+=paths.size();
+        int count = 0;
+        for (Collection<Path> paths : frontier.values()) {
+            count += paths.size();
         }
         return count;
     }
@@ -91,7 +119,7 @@ public class AStar {
     private void removeFromFrontier(Path path) {
         Collection<Path> paths = frontier.get(path.fScore());
         paths.remove(path);
-        if (paths.isEmpty()){
+        if (paths.isEmpty()) {
             frontier.remove(path.fScore());
         }
     }
@@ -152,12 +180,12 @@ public class AStar {
 
     private Path getLowestScoreFrontier() {
         Collection<Path> paths = frontier.get(frontier.firstKey());
-        Path retValue=null;
-        int maxCost=Integer.MAX_VALUE;
-        for (Path path:paths){
-            if (path.fScore()<maxCost){
-                retValue=path;
-                maxCost=path.fScore();
+        Path retValue = null;
+        int maxCost = Integer.MAX_VALUE;
+        for (Path path : paths) {
+            if (path.fScore() < maxCost) {
+                retValue = path;
+                maxCost = path.fScore();
             }
         }
         return retValue;
@@ -169,9 +197,46 @@ public class AStar {
         visited.clear();
     }
 
+    private int horizontalDistance(Tile current, Tile goal) {
+        int diff = Math.abs(goal.getCol() - current.getCol());
+        assert (diff < map.cols);
+        return Math.min(diff, map.cols - diff);
+    }
 
-    private int heuristicCost(Tile current, Tile goal) {
-        return Math.abs(goal.getRow() - current.getRow()) + Math.abs(goal.getCol() - current.getCol());
+    private int verticalDistance(Tile current, Tile goal) {
+        int diff = Math.abs(goal.getRow() - current.getRow());
+        return Math.min(diff, map.rows - diff);
+    }
+
+    public HeuristicCost getGoalHeuristics(final Tile goal) {
+        return new HeuristicCost() {
+            public int cost(Tile current) {
+                return verticalDistance(current, goal) + horizontalDistance(current, goal);
+            }
+        };
+    }
+
+
+    private int heuristicCost(Tile current) {
+        return heuristicCost.cost(current);
+    }
+
+    static interface HeuristicCost {
+        int cost(Tile current);
+    }
+
+    public EndCondition getGoalEndCondition(final Tile goal) {
+        return new EndCondition() {
+            @Override
+            public boolean goalReached(Tile tile) {
+                return tile.equals(goal);
+            }
+        };
+    }
+
+
+    static interface EndCondition {
+        boolean goalReached(Tile tile);
     }
 
     private class Path implements Comparable<Path> {
@@ -202,10 +267,12 @@ public class AStar {
     public static class AppraisedPath {
         List<Aim> path;
         int cost;
+        boolean goalReached;
 
-        public AppraisedPath(List<Aim> path, int cost) {
+        public AppraisedPath(List<Aim> path, int cost, boolean goalReached) {
             this.path = path;
             this.cost = cost;
+            this.goalReached = goalReached;
         }
 
 

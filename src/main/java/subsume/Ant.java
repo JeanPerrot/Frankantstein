@@ -2,6 +2,7 @@ package subsume;
 
 import ants.Aim;
 import ants.Ants;
+import ants.Ilk;
 import ants.Tile;
 import map.AntMap;
 import map.WorldMap;
@@ -9,15 +10,20 @@ import map.WorldMap;
 import java.util.*;
 
 public class Ant {
+    private static int ID = 0;
 
+    int id = ID++;
     Ants ants;
     Tile tile;
-    Aim currentDecision;
+    Decision currentDecision;
     AntMap nextTurn;
 
+    Layer defendHill = new DefendHill(this);
     Layer attackHill = new AttackAntHill(this);
     Layer seekFood = new SeekFood(this);
+    Layer occupyTerritory = new OccupyTerritory(this);
     Layer wanderAim = new WanderAim(this);
+    Layer explore = new Explore(this);
     Layer followWall = new FollowTheWall(this);
     Layer avoidObstacles = new AvoidObstacles(this);
 
@@ -35,22 +41,60 @@ public class Ant {
     }
 
     public Aim resolve() {
-        currentDecision = attackHill.output();
-        if (currentDecision == null) {
-            currentDecision = seekFood.output();
-        }
-        if (currentDecision == null) {
-            currentDecision = wanderAim.output();
-            if (currentDecision==null){
-//                System.out.println("no wandering aim");
+        //help debugging
+        if (TurnCount.count == TurnCount.turnStop) {
+            if (TurnCount.tilestop != null && tile.equals(TurnCount.tilestop)) {
+                Print.println("reached break condition");
             }
         }
-        if (currentDecision == null) {
-            currentDecision = followWall.output();
+
+        currentDecision = Decision.DONTKNOW;
+        currentDecision = defendHill.decide();
+        if (currentDecision.dontKnow()) {
+            currentDecision = attackHill.decide();
         }
-        currentDecision = avoidObstacles.output();
-        nextTurn.put(ants.getTile(tile, currentDecision), this);
-        return currentDecision;
+        if (currentDecision.dontKnow()) {
+            currentDecision = seekFood.decide();
+        }
+        if (currentDecision.dontKnow()){
+            currentDecision=occupyTerritory.decide();
+        }
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = explore.decide();
+//        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = wanderAim.decide();
+        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = followWall.decide();
+        }
+        currentDecision = avoidObstacles.decide();
+        markNextLocation();
+        explain();
+        return currentDecision.aim;
+    }
+
+    private void markNextLocation() {
+        Tile nextTile;
+        if (currentDecision.aim == null) {
+            nextTile = this.tile;
+        } else {
+            nextTile = ants.getTile(tile, currentDecision.aim);
+        }
+        nextTurn.put(nextTile, this);
+    }
+
+    private void explain() {
+        for (Layer layer : Arrays.asList(defendHill,
+                attackHill, seekFood, wanderAim, explore, followWall, avoidObstacles)) {
+            if (layer.lastDecision != null && !layer.lastDecision.action.equals(Decision.Action.DONTKNOW)) {
+                Print.println(this + " " + layer.getClass().getSimpleName() + " " + layer.explain());
+            }
+        }
+    }
+
+    public String toString() {
+        return "ANT " + id + " " + "(" + tile + ")";
     }
 
     public Tile getTile() {
@@ -69,7 +113,7 @@ public class Ant {
         return getCloseTiles(foods);
     }
 
-    public Aim getCurrentDecision() {
+    public Decision getCurrentDecision() {
         return currentDecision;
     }
 
@@ -94,7 +138,7 @@ public class Ant {
     }
 
     public void issueOrder() {
-        ants.issueOrder(tile, currentDecision);
+        ants.issueOrder(tile, currentDecision.aim);
     }
 
     public WorldMap getWorldMap() {
@@ -104,4 +148,10 @@ public class Ant {
     public List<Tile> getColonyCenters() {
         return new ArrayList<Tile>(ants.getMyHills());
     }
+
+    public boolean isAlive() {
+        return getWorldMap().getIlk(tile.getRow(), tile.getCol()).equals(Ilk.MY_ANT);
+    }
+
+
 }

@@ -12,9 +12,14 @@ public class AttackAntHill extends GoalSeek {
     }
 
     @Override
+    protected void assign(Ant ant, Tile goal) {
+    }
+
+    @Override
     protected void pickGoals() {
         Tile closeHill = ant.getCloseHill();
         if (closeHill == null) {
+            goal=null;
             potentialGoals = new ArrayList<Tile>();
             return;
         }

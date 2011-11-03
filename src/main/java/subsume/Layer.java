@@ -1,7 +1,5 @@
 package subsume;
 
-import ants.Aim;
-
 public abstract class Layer {
 
     Ant ant;
@@ -10,14 +8,22 @@ public abstract class Layer {
 
     Layer nextLayer;
 
+    Decision lastDecision;
+
+
     public Layer(Ant ant) {
         this.ant = ant;
     }
 
-    public Aim decide(){
-        return null;
+    public final Decision decide(){
+        lastDecision=output();
+        return lastDecision;
     }
 
-    public abstract Aim output();
+    protected abstract Decision output();
+
+    public  String explain(){
+        return "("+lastDecision+")";
+    }
 
 }
