@@ -43,7 +43,9 @@ public class WorldMap {
     }
 
     public Tile getTile(int row, int col) {
+        if (row < 0) row += rows;
         row = row % rows;
+        if (col<0) col+=cols;
         col = col % cols;
         return new Tile(row, col);
     }

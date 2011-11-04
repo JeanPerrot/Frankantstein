@@ -16,6 +16,8 @@ public class SeekFood extends GoalSeek {
     }
 
 
+
+
     @Override
     protected void pickGoals() {
         //reevaluate goals every time.
@@ -31,22 +33,30 @@ public class SeekFood extends GoalSeek {
 
     private Tile getBestGoal(GoalTracker foodTracker) {
         List<Tile> availableFoodTiles = getCloseAvailableFoodTiles(foodTracker);
-        SortedMap<Integer,Tile> sortedGoals=trueDistanceFoodTiles(availableFoodTiles);
+        SortedMap<Integer,List<Tile>> sortedGoals=trueDistanceFoodTiles(availableFoodTiles);
         if (sortedGoals.isEmpty()){
             return null;
         }
-        if (sortedGoals.firstKey()>10){
+        if (sortedGoals.firstKey()>15){
             return null;
         }
-        Tile bestGoal=sortedGoals.values().iterator().next();
-        return bestGoal;
+        List<Tile> best=sortedGoals.values().iterator().next();
+        if (best.contains(goal)){
+            return goal;
+        }
+        return best.iterator().next();
     }
 
-    SortedMap<Integer, Tile> trueDistanceFoodTiles(Collection<Tile> tiles) {
-        SortedMap<Integer, Tile> retValue = new TreeMap<Integer, Tile>();
+    SortedMap<Integer, List<Tile>> trueDistanceFoodTiles(Collection<Tile> tiles) {
+        SortedMap<Integer, List<Tile>> retValue = new TreeMap<Integer, List<Tile>>();
         for (Tile tile : tiles) {
             AStar.AppraisedPath path = new AStar(ant.getWorldMap(), ant.ants).findPath(ant.tile, tile);
-            retValue.put(path.cost, tile);
+            List<Tile>costed=retValue.get(path.cost);
+            if (costed==null){
+                costed=new ArrayList<Tile>();
+            }
+            costed.add(tile);
+            retValue.put(path.cost, costed);
         }
         return retValue;
     }

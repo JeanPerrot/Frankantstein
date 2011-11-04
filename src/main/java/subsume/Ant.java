@@ -24,7 +24,6 @@ public class Ant {
     Layer occupyTerritory = new OccupyTerritory(this);
     Layer wanderAim = new WanderAim(this);
     Layer explore = new Explore(this);
-    Layer followWall = new FollowTheWall(this);
     Layer avoidObstacles = new AvoidObstacles(this);
 
 
@@ -48,7 +47,7 @@ public class Ant {
             }
         }
 
-        currentDecision = Decision.DONTKNOW;
+        cleanDecisions();
         currentDecision = defendHill.decide();
         if (currentDecision.dontKnow()) {
             currentDecision = attackHill.decide();
@@ -56,22 +55,30 @@ public class Ant {
         if (currentDecision.dontKnow()) {
             currentDecision = seekFood.decide();
         }
-        if (currentDecision.dontKnow()){
-            currentDecision=occupyTerritory.decide();
+        if (currentDecision.dontKnow()) {
+            currentDecision = explore.decide();
         }
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = explore.decide();
-//        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = occupyTerritory.decide();
+        }
         if (currentDecision.dontKnow()) {
             currentDecision = wanderAim.decide();
         }
-        if (currentDecision.dontKnow()) {
-            currentDecision = followWall.decide();
-        }
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = followWall.decide();
+//        }
         currentDecision = avoidObstacles.decide();
         markNextLocation();
         explain();
         return currentDecision.aim;
+    }
+
+    private void cleanDecisions() {
+        currentDecision = Decision.DONTKNOW;
+        for (Layer layer : Arrays.asList(defendHill,
+                attackHill, seekFood, occupyTerritory, explore, wanderAim, avoidObstacles)) {
+            layer.lastDecision = null;
+        }
     }
 
     private void markNextLocation() {
@@ -86,7 +93,7 @@ public class Ant {
 
     private void explain() {
         for (Layer layer : Arrays.asList(defendHill,
-                attackHill, seekFood, wanderAim, explore, followWall, avoidObstacles)) {
+                attackHill, seekFood, occupyTerritory, explore, wanderAim, avoidObstacles)) {
             if (layer.lastDecision != null && !layer.lastDecision.action.equals(Decision.Action.DONTKNOW)) {
                 Print.println(this + " " + layer.getClass().getSimpleName() + " " + layer.explain());
             }
@@ -105,6 +112,7 @@ public class Ant {
         Tile nextTile = ants.getTile(tile, decision);
         if (!ants.getIlk(nextTile).isPassable()) return true;
         if (nextTurn.get(nextTile) != null) return true;
+        if (ants.getMyHills().contains(nextTile)) return true;
         return false;
     }
 

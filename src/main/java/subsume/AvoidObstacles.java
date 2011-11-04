@@ -32,6 +32,9 @@ public class AvoidObstacles extends Layer {
                 return Decision.STAY;
             }
             Print.println("taking a chance here. we might die.");
+            if (direction==null){
+                return Decision.STAY;
+            }
             return Decision.move(direction.turnLeft().turnLeft());
 
         }

@@ -44,18 +44,18 @@ public class ModifiedAStar {
     public AppraisedPath findPath(Tile start) {
 //        Print.println("AStar used " + counts++);
         clear();
-        addToFrontier(new Path(start, 0, heuristicCost(start)));
+        addToFrontier(new Path(start, 0, heuristicCost(start), 0));
 
         while (!frontier.isEmpty()) {
             Path lowestScore = getLowestScoreFrontier();
-            if (lowestScore.fScore() > costLimit) {
+            if (lowestScore.computationCost > costLimit) {
                 List<Tile> path = reconstructPath(lowestScore.tile);
                 if (path.size() == 1) {
                     return null;
                 }
                 return new AppraisedPath(toAim(path), lowestScore.fScore(), false);
             }
-            if (endCondition.goalReached(lowestScore.tile)) {
+                if (endCondition.goalReached(lowestScore.tile)) {
                 List<Tile> path = reconstructPath(lowestScore.tile);
                 if (path.size() == 1) {
                     return null;
@@ -74,11 +74,12 @@ public class ModifiedAStar {
                 int knownCost = score(tile) + lowestScore.knownCost;
                 int heuristicCost = heuristicCost(tile);
                 int tentativeCost = heuristicCost + knownCost;
+                int computationCost=lowestScore.computationCost+1;
 
                 Path alreadyInFrontier = getInFrontier(tile);
                 if (alreadyInFrontier == null) {
                     int size = frontierSize();
-                    addToFrontier(new Path(tile, knownCost, heuristicCost));
+                    addToFrontier(new Path(tile, knownCost, heuristicCost,computationCost));
                     if (frontierSize() < size + 1) throw new RuntimeException();
                 } else {
                     if (alreadyInFrontier.fScore() < tentativeCost) {
@@ -225,11 +226,13 @@ public class ModifiedAStar {
         Tile tile;
         int knownCost;
         int heuristicCost;
+        int computationCost;
 
-        private Path(Tile tile, int cost, int heuristicCost) {
+        private Path(Tile tile, int cost, int heuristicCost, int computationCost) {
             this.tile = tile;
             this.knownCost = cost;
             this.heuristicCost = heuristicCost;
+            this.computationCost = computationCost;
         }
 
         public int fScore() {
