@@ -24,7 +24,11 @@ public class Ant {
     Layer occupyTerritory = new OccupyTerritory(this);
     Layer wanderAim = new WanderAim(this);
     Layer explore = new Explore(this);
+    Layer randomWalk = new RandomWalk(this);
     Layer avoidObstacles = new AvoidObstacles(this);
+
+    List<Layer> layers = Arrays.asList(defendHill,
+            attackHill, seekFood, occupyTerritory, explore, wanderAim, randomWalk, avoidObstacles);
 
 
     public void setAnts(Ants ants) {
@@ -61,12 +65,12 @@ public class Ant {
         if (currentDecision.dontKnow()) {
             currentDecision = occupyTerritory.decide();
         }
-        if (currentDecision.dontKnow()) {
-            currentDecision = wanderAim.decide();
-        }
 //        if (currentDecision.dontKnow()) {
-//            currentDecision = followWall.decide();
+//            currentDecision = wanderAim.decide();
 //        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = randomWalk.decide();
+        }
         currentDecision = avoidObstacles.decide();
         markNextLocation();
         explain();
@@ -75,8 +79,7 @@ public class Ant {
 
     private void cleanDecisions() {
         currentDecision = Decision.DONTKNOW;
-        for (Layer layer : Arrays.asList(defendHill,
-                attackHill, seekFood, occupyTerritory, explore, wanderAim, avoidObstacles)) {
+        for (Layer layer : layers) {
             layer.lastDecision = null;
         }
     }
@@ -92,8 +95,7 @@ public class Ant {
     }
 
     private void explain() {
-        for (Layer layer : Arrays.asList(defendHill,
-                attackHill, seekFood, occupyTerritory, explore, wanderAim, avoidObstacles)) {
+        for (Layer layer : layers) {
             if (layer.lastDecision != null && !layer.lastDecision.action.equals(Decision.Action.DONTKNOW)) {
                 Print.println(this + " " + layer.getClass().getSimpleName() + " " + layer.explain());
             }

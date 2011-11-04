@@ -7,7 +7,7 @@ public class Util {
 
     public static void main(String[] args) throws IOException {
         nullSysOut();
-        TurnCount.turnStop = 112;
+        TurnCount.turnStop = 349;
         TurnCount.tilestop = new Tile(21, 6);
 
         MyBot bot = new MyBot();

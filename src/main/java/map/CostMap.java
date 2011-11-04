@@ -3,8 +3,9 @@ package map;
 import ants.Ants;
 import ants.Tile;
 import subsume.GoalTracker;
+import subsume.Print;
 
-import java.util.*;
+import java.util.Collections;
 
 public abstract class CostMap {
     public static final int OCCUPY_RADIUS = 15;
@@ -53,14 +54,23 @@ public abstract class CostMap {
 
     public abstract int getCols();
 
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        for (int row = 0; row < getRows(); row++) {
-            for (int col = 0; col < getCols(); col++) {
-                builder.append(getCost(row, col));
+    public void print(int minr, int minc, int dim) {
+        for (int row = minr; row < minr + dim; row++) {
+            StringBuilder builder = new StringBuilder();
+            for (int col = minc; col < minc + dim; col++) {
+                int cost = getCost(row, col);
+                if (cost == 0) {
+                    builder.append(" ");
+                } else if (cost < 10) {
+                    builder.append(cost);
+                } else if (cost < 1000) {
+                    builder.append("O");
+                } else {
+                    builder.append("X");
+                }
+
             }
-            builder.append("\n");
+            Print.println("row " + row + ": " + builder.toString());
         }
-        return builder.toString();
     }
 }

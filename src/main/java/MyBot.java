@@ -2,6 +2,7 @@ import ants.Ants;
 import ants.Tile;
 import map.AntMap;
 import map.CostMap;
+import map.HillEnemiesCache;
 import subsume.Ant;
 import subsume.Print;
 import subsume.TurnCount;
@@ -43,6 +44,7 @@ public class MyBot extends Bot {
         Print.println("turn " + TurnCount.count);
         gameState = getAnts();
         gameState.markVisionExplored();
+        HillEnemiesCache.get(gameState).clear();
 
         thisTurn = nextTurn;
         nextTurn = new AntMap();

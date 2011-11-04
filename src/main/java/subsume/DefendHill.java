@@ -3,6 +3,7 @@ package subsume;
 import ants.Aim;
 import ants.Ilk;
 import ants.Tile;
+import map.HillEnemiesCache;
 
 public class DefendHill extends Layer {
 
@@ -29,7 +30,7 @@ public class DefendHill extends Layer {
         if (shouldStopDefending()) {
             defending = false;
             defenders--;
-            defenseSpot=null;
+            defenseSpot = null;
             return Decision.DONTKNOW;
         }
         if (defending) {
@@ -93,7 +94,7 @@ public class DefendHill extends Layer {
     }
 
     private boolean near(Tile myHill) {
-        return ant.ants.getDistance(ant.tile, myHill) < 50;
+        return ant.ants.getDistance(ant.tile, myHill) < 60;
     }
 
     private Tile getMyHill() {
@@ -102,15 +103,9 @@ public class DefendHill extends Layer {
 
     private int getDesiredDefenders() {
         int myNums = ant.ants.getMyAnts().size();
-        int enemyNear = enemiesNearHill();
-        return enemyNear + Math.min(myNums / 8, 4);
+        int enemyNear = HillEnemiesCache.get(ant.ants).enemiesNearHill(getMyHill());
+        return enemyNear + Math.min(myNums / 10, 2);
     }
 
-    private int enemiesNearHill() {
-        Tile myHill = getMyHill();
-        if (myHill == null) {
-            return 0;
-        }
-        return ant.ants.visibleEnemies(myHill).size();
-    }
+
 }

@@ -1,9 +1,8 @@
 package map;
 
-import ants.Aim;
 import ants.Tile;
 
-import java.util.*;
+import java.util.Set;
 
 class DistanceCostMap extends CostMap {
     private int[][] data;
@@ -24,70 +23,14 @@ class DistanceCostMap extends CostMap {
         }
     }
 
-    private void paintCosts(Tile tile, int initialCost, int[][] costs) {
-        Set<Tile> visited = new HashSet<Tile>();
-        Set<Tile> nonCostedFrontier = new HashSet<Tile>();
-        SortedSet<CostedTile> frontier = new TreeSet<CostedTile>();
-        frontier.add(new CostedTile(tile, initialCost));
-        nonCostedFrontier.add(tile);
-
-        while (!frontier.isEmpty()) {
-            CostedTile toVisit = frontier.last();
-            frontier.remove(toVisit);
-            nonCostedFrontier.remove(tile);
-            visited.add(toVisit);
-            if (!map.getIlk(toVisit.getRow(), toVisit.getCol()).isPassable()) {
-                continue;
+    private void paintCosts(Tile costItem, int dimension, final int[][] costs) {
+        TrueDistance.Action action = new TrueDistance.Action() {
+            @Override
+            public void perform(Tile tile, int cost) {
+                costs[tile.getRow()][tile.getCol()] += cost;
             }
-            costs[toVisit.getRow()][toVisit.getCol()] += toVisit.cost;
-            if (toVisit.cost == 1) continue;
-
-            for (Tile neighbor : getNeighbors(toVisit)) {
-                if (visited.contains(neighbor)) continue;
-                //this should not ever be better than what is in the frontier?
-                if (nonCostedFrontier.contains(neighbor)) continue;
-
-                frontier.add(new CostedTile(tile, toVisit.cost - 1));
-                nonCostedFrontier.add(neighbor);
-            }
-        }
-
-    }
-
-    private static class CostedTile extends Tile {
-        static int discrimant = 0;
-        int cost;
-        int discriminant;
-
-        public CostedTile(Tile tile, int cost) {
-            super(tile.getRow(), tile.getCol());
-            this.cost = cost;
-            this.discriminant = discrimant++;
-        }
-
-        @Override
-        public int compareTo(Tile o) {
-            if (o instanceof CostedTile) {
-                CostedTile cast = (CostedTile) o;
-                if (cast.cost == cost) {
-                    return discriminant - cast.discriminant;
-                }
-                return cost = cast.cost;
-            }
-            return super.compareTo(o);
-        }
-
-
-    }
-
-
-    private List<Tile> getNeighbors(Tile tile) {
-        List<Tile> retValue = new ArrayList<Tile>();
-        for (Aim aim : Aim.values()) {
-            retValue.add(map.getTile(tile.getRow() + aim.getRowDelta(), tile.getCol() + aim.getColDelta()));
-        }
-        return retValue;
-
+        };
+        new TrueDistance(map).nearWalk(costItem, dimension, action);
     }
 
 
