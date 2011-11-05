@@ -5,8 +5,14 @@ import ants.Tile;
 public class AddMap extends CostMap {
     CostMap[] maps = new CostMap[0];
 
+    public AddMap() {
+        super(0, 0);
+    }
+
     public void setMaps(CostMap... maps) {
         this.maps = maps;
+        super.rows = maps[0].rows;
+        super.cols = maps[0].cols;
     }
 
     @Override
@@ -15,7 +21,7 @@ public class AddMap extends CostMap {
         for (CostMap map : maps) {
             cost += map.getCost(tile);
         }
-        return cost;
+        return Math.max(0,cost);
     }
 
     @Override

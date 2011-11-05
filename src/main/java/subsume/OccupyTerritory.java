@@ -4,6 +4,8 @@ import map.CostMap;
 
 public class OccupyTerritory extends Layer {
 
+    private int costLimit=30;
+
     public OccupyTerritory(Ant ant) {
         super(ant);
     }
@@ -11,7 +13,7 @@ public class OccupyTerritory extends Layer {
     @Override
     protected Decision output() {
         CostMap occupyMap = CostMap.getMyOccupyMap(ant.ants, ant.tile);
-        ModifiedAStar.AppraisedPath path = new ModifiedAStar(occupyMap, ant.ants).findPath(ant.tile);
+        ModifiedAStar.AppraisedPath path = new ModifiedAStar(occupyMap, ant.ants,costLimit).findPath(ant.tile);
         if (path == null || path.path.isEmpty()) {
             return Decision.DONTKNOW;
         }

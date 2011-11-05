@@ -12,6 +12,7 @@ class PassableMap extends CostMap {
     private Ants ants;
 
     PassableMap(Ants ants, WorldMap map, int passableCost) {
+        super(map.rows,map.cols);
         this.ants = ants;
         this.map = map;
         this.passableCost = passableCost;

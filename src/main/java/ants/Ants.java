@@ -450,6 +450,13 @@ public class Ants {
                 visible[newLoc.getRow()][newLoc.getCol()] = true;
             }
         }
+        //confirm enemy hills
+        for (Tile tile : new ArrayList<Tile>(map.getEnemyHills())) {
+            if (isVisible(tile) && !enemyHills.contains(tile)) {
+                map.removeEnemyHill(tile);
+            }
+
+        }
     }
 
     /**
@@ -490,9 +497,10 @@ public class Ants {
      * @param tile  location on the game map to be updated
      */
     public void updateHills(int owner, Tile tile) {
-        if (owner > 0)
+        if (owner > 0) {
             enemyHills.add(tile);
-        else
+            map.addEnemyHill(tile);
+        } else
             myHills.add(tile);
     }
 

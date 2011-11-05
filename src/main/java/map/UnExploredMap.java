@@ -13,6 +13,7 @@ public class UnExploredMap extends CostMap {
     private Ants ants;
 
     UnExploredMap(Ants ants, GoalTracker tracker) {
+        super(ants.getMap().rows, ants.getMap().cols);
 
         this.ants = ants;
         this.map = ants.getMap();

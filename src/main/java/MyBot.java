@@ -3,6 +3,7 @@ import ants.Tile;
 import map.AntMap;
 import map.CostMap;
 import map.HillEnemiesCache;
+import map.PheromoneMap;
 import subsume.Ant;
 import subsume.Print;
 import subsume.TurnCount;
@@ -39,18 +40,25 @@ public class MyBot extends Bot {
      */
     @Override
     public void doTurn() {
+        long time = System.currentTimeMillis();
         CostMap.clearTurn();
         TurnCount.count++;
         Print.println("turn " + TurnCount.count);
         gameState = getAnts();
         gameState.markVisionExplored();
         HillEnemiesCache.get(gameState).clear();
+        PheromoneMap.getPheromoneMap(gameState).markTerritory(gameState.getMyAnts());
+
 
         thisTurn = nextTurn;
         nextTurn = new AntMap();
 
         List<Ant> ants = getMyAnts();
         for (Ant ant : ants) {
+            if (System.currentTimeMillis() - time > 230) {
+                Print.println("**********************TIMEOUT PROTECTION KICKING IN********************************");
+//                throw new RuntimeException("timeout");
+            }
             ant.resolve();
         }
         for (Ant ant : ants) {

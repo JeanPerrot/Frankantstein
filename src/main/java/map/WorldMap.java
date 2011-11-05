@@ -4,6 +4,8 @@ import ants.Ilk;
 import ants.Tile;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 //accumulate static belief about the world
 public class WorldMap {
@@ -13,6 +15,7 @@ public class WorldMap {
     private Ilk[][] world;
     private boolean[][] explored;
     private int totalExplored = 0;
+    private Set<Tile>enemyHills=new HashSet<Tile>();
 
     public WorldMap(int rows, int cols) {
         this.cols = cols;
@@ -64,4 +67,15 @@ public class WorldMap {
         return totalExplored == rows * cols;
     }
 
+    public void addEnemyHill(Tile tile) {
+        enemyHills.add(tile);
+    }
+
+    public void removeEnemyHill(Tile tile){
+        enemyHills.remove(tile);
+    }
+
+    public Set<Tile> getEnemyHills() {
+        return enemyHills;
+    }
 }

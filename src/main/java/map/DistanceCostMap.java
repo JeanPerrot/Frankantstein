@@ -9,6 +9,7 @@ class DistanceCostMap extends CostMap {
     private WorldMap map;
 
     DistanceCostMap(WorldMap map, Set<Tile> costItems, int dimension, boolean substract) {
+        super(map.rows,map.cols);
         this.map = map;
         int multiplier = substract ? -1 : 1;
         data = new int[map.rows][map.cols];
@@ -24,13 +25,13 @@ class DistanceCostMap extends CostMap {
     }
 
     private void paintCosts(Tile costItem, int dimension, final int[][] costs) {
-        TrueDistance.Action action = new TrueDistance.Action() {
+        TrueWalk.Action action = new TrueWalk.Action() {
             @Override
             public void perform(Tile tile, int cost) {
                 costs[tile.getRow()][tile.getCol()] += cost;
             }
         };
-        new TrueDistance(map).nearWalk(costItem, dimension, action);
+        new TrueWalk(map).nearWalk(costItem, dimension, action);
     }
 
 

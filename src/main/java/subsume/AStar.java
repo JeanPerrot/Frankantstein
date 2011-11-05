@@ -16,6 +16,7 @@ public class AStar {
     private EndCondition endCondition;
 
     private SortedMap<Integer, Collection<Path>> frontier = new TreeMap<Integer, Collection<Path>>();
+    private Map<Tile, Path> frontierNoCost = new HashMap<Tile, Path>();
     private Map<Tile, Tile> cameFrom = new HashMap<Tile, Tile>();
     private Set<Tile> visited = new HashSet<Tile>();
 
@@ -32,6 +33,13 @@ public class AStar {
         }
         return (paths.get(0));
     }
+
+    public AStar(WorldMap map, Ants ants, int costLimit) {
+        this.map = map;
+        this.ants = ants;
+        this.costLimit = costLimit;
+    }
+
 
     public AStar(WorldMap map, Ants ants) {
         this.map = map;
@@ -100,11 +108,7 @@ public class AStar {
     }
 
     private int frontierSize() {
-        int count = 0;
-        for (Collection<Path> paths : frontier.values()) {
-            count += paths.size();
-        }
-        return count;
+        return frontierNoCost.size();
     }
 
     private void addToFrontier(Path path) {
@@ -114,6 +118,7 @@ public class AStar {
         }
         paths.add(path);
         frontier.put(path.fScore(), paths);
+        frontierNoCost.put(path.tile, path);
     }
 
     private void removeFromFrontier(Path path) {
@@ -122,17 +127,11 @@ public class AStar {
         if (paths.isEmpty()) {
             frontier.remove(path.fScore());
         }
+        frontierNoCost.remove(path.tile);
     }
 
     private Path getInFrontier(Tile tile) {
-        for (Collection<Path> paths : frontier.values()) {
-            for (Path path : paths) {
-                if (path.tile.equals(tile)) {
-                    return path;
-                }
-            }
-        }
-        return null;
+        return frontierNoCost.get(tile);
     }
 
     private int score(Tile tile) {

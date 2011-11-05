@@ -20,20 +20,25 @@ public class ModifiedAStar {
     private HeuristicCost heuristicCost;
     private EndCondition endCondition;
 
+
     private SortedMap<Integer, Collection<Path>> frontier = new TreeMap<Integer, Collection<Path>>();
+    private Map<Tile, Path> frontierNoCost = new HashMap<Tile, Path>();
+
+
     private Map<Tile, Tile> cameFrom = new HashMap<Tile, Tile>();
     private Set<Tile> visited = new HashSet<Tile>();
 
-    private int costLimit = 30;
+    private int costLimit = 35;
 
-    public ModifiedAStar(CostMap costMap, Ants ants) {
+    public ModifiedAStar(CostMap costMap, Ants ants, int costLimit) {
         this.map = costMap;
         this.ants = ants;
+        this.costLimit = costLimit;
         heuristicCost = getZeroHeuristics();
-        endCondition=new EndCondition() {
+        endCondition = new EndCondition() {
             @Override
             public boolean goalReached(Tile tile) {
-                return map.getCost(tile)==0;
+                return map.getCost(tile) == 0;
             }
         };
     }
@@ -55,7 +60,7 @@ public class ModifiedAStar {
                 }
                 return new AppraisedPath(toAim(path), lowestScore.fScore(), false);
             }
-                if (endCondition.goalReached(lowestScore.tile)) {
+            if (endCondition.goalReached(lowestScore.tile)) {
                 List<Tile> path = reconstructPath(lowestScore.tile);
                 if (path.size() == 1) {
                     return null;
@@ -74,12 +79,12 @@ public class ModifiedAStar {
                 int knownCost = score(tile) + lowestScore.knownCost;
                 int heuristicCost = heuristicCost(tile);
                 int tentativeCost = heuristicCost + knownCost;
-                int computationCost=lowestScore.computationCost+1;
+                int computationCost = lowestScore.computationCost + 1;
 
                 Path alreadyInFrontier = getInFrontier(tile);
                 if (alreadyInFrontier == null) {
                     int size = frontierSize();
-                    addToFrontier(new Path(tile, knownCost, heuristicCost,computationCost));
+                    addToFrontier(new Path(tile, knownCost, heuristicCost, computationCost));
                     if (frontierSize() < size + 1) throw new RuntimeException();
                 } else {
                     if (alreadyInFrontier.fScore() < tentativeCost) {
@@ -95,11 +100,7 @@ public class ModifiedAStar {
     }
 
     private int frontierSize() {
-        int count = 0;
-        for (Collection<Path> paths : frontier.values()) {
-            count += paths.size();
-        }
-        return count;
+        return frontierNoCost.size();
     }
 
     private void addToFrontier(Path path) {
@@ -109,6 +110,7 @@ public class ModifiedAStar {
         }
         paths.add(path);
         frontier.put(path.fScore(), paths);
+        frontierNoCost.put(path.tile, path);
     }
 
     private void removeFromFrontier(Path path) {
@@ -117,21 +119,15 @@ public class ModifiedAStar {
         if (paths.isEmpty()) {
             frontier.remove(path.fScore());
         }
+        frontierNoCost.remove(path.tile);
     }
 
     private Path getInFrontier(Tile tile) {
-        for (Collection<Path> paths : frontier.values()) {
-            for (Path path : paths) {
-                if (path.tile.equals(tile)) {
-                    return path;
-                }
-            }
-        }
-        return null;
+        return frontierNoCost.get(tile);
     }
 
     private int score(Tile tile) {
-      return map.getCost(tile);
+        return map.getCost(tile);
     }
 
     private List<Tile> getNeighbors(Tile tile) {
@@ -194,7 +190,7 @@ public class ModifiedAStar {
     public HeuristicCost getZeroHeuristics() {
         return new HeuristicCost() {
             public int cost(Tile current) {
-                 return 0;
+                return 0;
             }
         };
     }

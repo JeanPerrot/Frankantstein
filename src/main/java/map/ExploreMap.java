@@ -15,7 +15,7 @@ public class ExploreMap extends AddMap {
         final WorldMap map = ants.getMap();
         unexplored = new UnExploredMap(ants, tracker);
         PassableMap passable = new PassableMap(ants, map, 0);
-        CostMap notVisited = new CostMap() {
+        CostMap notVisited = new CostMap(map.rows,map.cols) {
             @Override
             public int getCost(Tile tile) {
                 return map.isExplored(tile.getRow(), tile.getCol()) ? 1 : 0;

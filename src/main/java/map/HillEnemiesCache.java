@@ -46,7 +46,7 @@ public class HillEnemiesCache {
 
     private int computeIt(Tile myHill) {
         final AtomicInteger counter = new AtomicInteger();
-        TrueDistance.Action action = new TrueDistance.Action() {
+        TrueWalk.Action action = new TrueWalk.Action() {
             @Override
             public void perform(Tile tile, int cost) {
                 if (ants.getIlk(tile).equals(Ilk.ENEMY_ANT)) {
@@ -55,7 +55,7 @@ public class HillEnemiesCache {
             }
         };
 
-        new TrueDistance(ants.getMap()).nearWalk(myHill, HILL_RANGE, action);
+        new TrueWalk(ants.getMap()).nearWalk(myHill, HILL_RANGE, action);
         return counter.get();
     }
 

@@ -19,16 +19,18 @@ public class Ant {
     AntMap nextTurn;
 
     Layer defendHill = new DefendHill(this);
-    Layer attackHill = new AttackAntHill(this);
+    Layer attackHill = new AttackCloseHill(this);
     Layer seekFood = new SeekFood(this);
+    Layer avoidPheromone = new AvoidPheromone(this);
     Layer occupyTerritory = new OccupyTerritory(this);
     Layer wanderAim = new WanderAim(this);
     Layer explore = new Explore(this);
+    Layer attackDistantHill = new AttackDistantHill(this);
     Layer randomWalk = new RandomWalk(this);
     Layer avoidObstacles = new AvoidObstacles(this);
 
     List<Layer> layers = Arrays.asList(defendHill,
-            attackHill, seekFood, occupyTerritory, explore, wanderAim, randomWalk, avoidObstacles);
+            attackHill, seekFood, avoidPheromone, occupyTerritory, explore, attackDistantHill, wanderAim, randomWalk, avoidObstacles);
 
 
     public void setAnts(Ants ants) {
@@ -46,7 +48,7 @@ public class Ant {
     public Aim resolve() {
         //help debugging
         if (TurnCount.count == TurnCount.turnStop) {
-            if (TurnCount.tilestop != null && tile.equals(TurnCount.tilestop)) {
+                if (TurnCount.tilestop != null && tile.equals(TurnCount.tilestop)) {
                 Print.println("reached break condition");
             }
         }
@@ -62,15 +64,23 @@ public class Ant {
         if (currentDecision.dontKnow()) {
             currentDecision = explore.decide();
         }
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = attackDistantHill.decide();
+//        }
+
         if (currentDecision.dontKnow()) {
-            currentDecision = occupyTerritory.decide();
+            currentDecision = avoidPheromone.decide();
         }
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = occupyTerritory.decide();
+//        }
 //        if (currentDecision.dontKnow()) {
 //            currentDecision = wanderAim.decide();
 //        }
-        if (currentDecision.dontKnow()) {
-            currentDecision = randomWalk.decide();
-        }
+
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = randomWalk.decide();
+//        }
         currentDecision = avoidObstacles.decide();
         markNextLocation();
         explain();
@@ -127,12 +137,16 @@ public class Ant {
         return currentDecision;
     }
 
-    private List<Tile> getCloseTiles(Set<Tile> foods) {
+    public List<Tile> getCloseTiles(Set<Tile> tiles) {
+        return getCloseTiles(tiles, ants.getViewRadius2());
+    }
+
+    private List<Tile> getCloseTiles(Set<Tile> foods, int maxDistance) {
         SortedMap<Integer, Tile> closeFoodTiles = new TreeMap<Integer, Tile>();
         int minDistance = Integer.MAX_VALUE;
         for (Tile food : foods) {
             int distance = ants.getDistance(food, tile);
-            if (distance <= ants.getViewRadius2()) {
+            if (distance <= maxDistance) {
                 closeFoodTiles.put(distance, food);
             }
         }
@@ -148,7 +162,9 @@ public class Ant {
     }
 
     public void issueOrder() {
-        ants.issueOrder(tile, currentDecision.aim);
+        if (currentDecision != null) {
+            ants.issueOrder(tile, currentDecision.aim);
+        }
     }
 
     public WorldMap getWorldMap() {

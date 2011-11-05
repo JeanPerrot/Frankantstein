@@ -8,7 +8,15 @@ import subsume.Print;
 import java.util.Collections;
 
 public abstract class CostMap {
-    public static final int OCCUPY_RADIUS = 15;
+    public static final int OCCUPY_RADIUS = 25;
+
+    int rows;
+    int cols;
+
+    protected CostMap(int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+    }
 
     public abstract int getCost(Tile tile);
 
@@ -47,12 +55,17 @@ public abstract class CostMap {
     public static void clearTurn() {
         explore = null;
         occupy = null;
+        PheromoneMap.clearTurn();
     }
 
 
-    public abstract int getRows();
+    public int getRows() {
+        return rows;
+    }
 
-    public abstract int getCols();
+    public int getCols() {
+        return cols;
+    }
 
     public void print(int minr, int minc, int dim) {
         for (int row = minr; row < minr + dim; row++) {
@@ -64,7 +77,7 @@ public abstract class CostMap {
                 } else if (cost < 10) {
                     builder.append(cost);
                 } else if (cost < 1000) {
-                    builder.append("O");
+                    builder.append("M");
                 } else {
                     builder.append("X");
                 }

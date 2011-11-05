@@ -9,6 +9,7 @@ import java.util.List;
 public class Explore extends Layer {
 
     private Tile goal;
+    private int costLimit=50;
     private GoalTracker exploreTrack = GoalTracker.getExploreTrack();
 
     public Explore(Ant ant) {
@@ -57,7 +58,7 @@ public class Explore extends Layer {
         }
         //cost map is going to be given by the WorldMap.
         CostMap map = CostMap.getExploreMap(ant.ants, GoalTracker.getExploreTrack());
-        ModifiedAStar.AppraisedPath path = new ModifiedAStar(map, ant.ants).findPath(ant.tile);
+        ModifiedAStar.AppraisedPath path = new ModifiedAStar(map, ant.ants,costLimit).findPath(ant.tile);
         if (path == null) {
             return null;
         }
