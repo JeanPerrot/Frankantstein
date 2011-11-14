@@ -1,6 +1,7 @@
 package subsume;
 
 import map.CostMap;
+import subsume.algo.ModifiedAStar;
 
 public class OccupyTerritory extends Layer {
 

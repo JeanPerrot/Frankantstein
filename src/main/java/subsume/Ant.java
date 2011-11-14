@@ -6,6 +6,8 @@ import ants.Ilk;
 import ants.Tile;
 import map.AntMap;
 import map.WorldMap;
+import util.Print;
+import util.TurnCount;
 
 import java.util.*;
 
@@ -68,15 +70,15 @@ public class Ant {
 //            currentDecision = attackDistantHill.decide();
 //        }
 
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = avoidPheromone.decide();
+//        }
         if (currentDecision.dontKnow()) {
-            currentDecision = avoidPheromone.decide();
+            currentDecision = occupyTerritory.decide();
         }
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = occupyTerritory.decide();
-//        }
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = wanderAim.decide();
-//        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = wanderAim.decide();
+        }
 
 //        if (currentDecision.dontKnow()) {
 //            currentDecision = randomWalk.decide();

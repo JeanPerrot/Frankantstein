@@ -1,6 +1,7 @@
 package map;
 
 import ants.Tile;
+import subsume.algo.TrueWalk;
 
 import java.util.Set;
 

@@ -3,7 +3,7 @@ package map;
 import ants.Ants;
 import ants.Tile;
 import subsume.GoalTracker;
-import subsume.Print;
+import util.Print;
 
 import java.util.Collections;
 

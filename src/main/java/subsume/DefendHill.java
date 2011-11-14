@@ -4,6 +4,7 @@ import ants.Aim;
 import ants.Ilk;
 import ants.Tile;
 import map.HillEnemiesCache;
+import subsume.algo.AStar;
 
 public class DefendHill extends Layer {
 

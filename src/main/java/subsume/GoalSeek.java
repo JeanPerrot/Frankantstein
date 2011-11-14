@@ -2,6 +2,7 @@ package subsume;
 
 import ants.Aim;
 import ants.Tile;
+import subsume.algo.AStar;
 
 import java.util.ArrayList;
 import java.util.List;

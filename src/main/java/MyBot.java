@@ -5,8 +5,9 @@ import map.CostMap;
 import map.HillEnemiesCache;
 import map.PheromoneMap;
 import subsume.Ant;
-import subsume.Print;
-import subsume.TurnCount;
+import subsume.fight.HeatMap;
+import util.Print;
+import util.TurnCount;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class MyBot extends Bot {
     public void doTurn() {
         long time = System.currentTimeMillis();
         CostMap.clearTurn();
+        HeatMap.clearTurn();
         TurnCount.count++;
         Print.println("turn " + TurnCount.count);
         gameState = getAnts();

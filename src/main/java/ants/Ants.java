@@ -32,6 +32,7 @@ public class Ants {
     private final boolean visible[][];
 
     private final Set<Tile> visionOffsets;
+    private final Set<Tile> attackOffsets;
 
     private long turnStartTime;
 
@@ -49,6 +50,9 @@ public class Ants {
     private final Set<Tile> foodTiles = new HashSet<Tile>();
 
     private final Set<Order> orders = new HashSet<Order>();
+
+    private Map<Integer, Set<Tile>> enemyAntByOwner = new HashMap<Integer, Set<Tile>>();
+
 
     /**
      * Creates new {@link Ants} object.
@@ -86,6 +90,17 @@ public class Ants {
                 int d = row * row + col * col;
                 if (d <= viewRadius2) {
                     visionOffsets.add(new Tile(row, col));
+                }
+            }
+        }
+
+        attackOffsets = new HashSet<Tile>();
+        mx = (int) Math.sqrt(attackRadius2);
+        for (int row = -mx; row <= mx; ++row) {
+            for (int col = -mx; col <= mx; ++col) {
+                int d = row * row + col * col;
+                if (d <= attackRadius2) {
+                    attackOffsets.add(new Tile(row, col));
                 }
             }
         }
@@ -389,6 +404,7 @@ public class Ants {
             map.addKnowledge(enemyAnt, Ilk.LAND);
         }
         enemyAnts.clear();
+        enemyAntByOwner.clear();
     }
 
     /**
@@ -550,4 +566,27 @@ public class Ants {
     public Set<Tile> getVisionOffsets() {
         return visionOffsets;
     }
+
+    public Set<Tile> getAttackOffsets() {
+        return attackOffsets;
+    }
+
+    public void enemyAnt(Tile tile, int owner) {
+        Set<Tile> ants = enemyAntByOwner.get(owner);
+        if (ants == null) {
+            ants = new HashSet<Tile>();
+            enemyAntByOwner.put(owner, ants);
+        }
+        ants.add(tile);
+    }
+
+    public Set<Tile> getEnemyAnts(int owner) {
+        return enemyAntByOwner.get(owner);
+    }
+
+    public Set<Integer> getVisibleEnemies() {
+        return enemyAntByOwner.keySet();
+    }
+
+
 }

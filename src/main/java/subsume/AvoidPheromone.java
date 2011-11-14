@@ -2,6 +2,7 @@ package subsume;
 
 import map.CostMap;
 import map.PheromoneMap;
+import subsume.algo.ModifiedAStar;
 
 public class AvoidPheromone extends Layer {
 

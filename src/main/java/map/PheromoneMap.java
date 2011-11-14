@@ -2,6 +2,7 @@ package map;
 
 import ants.Ants;
 import ants.Tile;
+import subsume.algo.TrueWalk;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -1,6 +1,7 @@
 package subsume;
 
 import ants.Tile;
+import subsume.algo.AStar;
 
 import java.util.*;
 

@@ -3,6 +3,7 @@ package map;
 import ants.Ants;
 import ants.Ilk;
 import ants.Tile;
+import subsume.algo.TrueWalk;
 
 import java.util.HashMap;
 import java.util.Map;

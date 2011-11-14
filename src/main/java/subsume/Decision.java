@@ -4,10 +4,10 @@ import ants.Aim;
 
 public class Decision {
 
-    static Decision DONTKNOW = new Decision(null, Action.DONTKNOW);
-    static Decision STAY = new Decision(null, Action.STAY);
+    public  static Decision DONTKNOW = new Decision(null, Action.DONTKNOW);
+    public static Decision STAY = new Decision(null, Action.STAY);
 
-    static Decision move(Aim aim) {
+    public static Decision move(Aim aim) {
         return new Decision(aim, Action.MOVE);
     }
 
@@ -29,4 +29,23 @@ public class Decision {
         return action+(aim!=null?"("+aim+")":"");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Decision decision = (Decision) o;
+
+        if (action != decision.action) return false;
+        if (aim != decision.aim) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = aim != null ? aim.hashCode() : 0;
+        result = 31 * result + (action != null ? action.hashCode() : 0);
+        return result;
+    }
 }

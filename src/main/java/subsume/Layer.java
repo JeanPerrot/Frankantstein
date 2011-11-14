@@ -1,5 +1,7 @@
 package subsume;
 
+import util.Print;
+
 public abstract class Layer {
 
     Ant ant;
@@ -17,7 +19,7 @@ public abstract class Layer {
         long elapsed = (System.nanoTime() - time)/1000;
         if (elapsed>10000)
         {
-            Print.debug(this.getClass().getSimpleName()+" took "+elapsed+"micros");
+            Print.debug(this.getClass().getSimpleName() + " took " + elapsed + "micros");
         }
         return lastDecision;
     }
