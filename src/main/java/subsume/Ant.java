@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Ant {
     private static int ID = 0;
-    public static boolean reinforcementLearning = true;
+    public static boolean reinforcementLearning = false;
 
 
     int id = ID++;
