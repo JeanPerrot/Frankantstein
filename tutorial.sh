@@ -1,1 +1,0 @@
-python tools/playgame.py "java -jar build/libs/MyBot.jar" "java -jar fightBot-v1.jar" --map_file tools/maps/maze/maze_02p_01.map --log_dir game_logs --turns 1000 --player_seed 7 --verbose -e
