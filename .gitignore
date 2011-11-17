@@ -5,3 +5,6 @@
 build/
 game_logs/
 out/
+bots/bot.log
+*/*.pyc
+*/*/*.pyc

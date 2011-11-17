@@ -3,6 +3,22 @@ apply plugin: 'idea'
 sourceCompatibility = '1.6'
 targetCompatilibity = '1.6'
 
+import groovyx.gpars.GParsPool
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	
+	dependencies {
+		classpath 'org.codehaus.gpars:gpars:0.12'
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
 dependencies {
     testCompile('junit:junit:4.8.1')
 }
@@ -18,4 +34,65 @@ task srcZip(type: Zip) {
     classifier = 'src'
     from sourceSets*.allSource
     excludes = ["**/*Test.java"]
+}
+
+task rate(dependsOn: jar) << {
+	def bots = ["zombie", "merv-v3", "flightBot-v6", "merv-v11", "MyBot-5"] 
+	def maps = ["maze/maze_02p_01", "multi_hill_maze/maze_02p_01", "random_walk/random_walk_02p_01"]
+	def gameId = 1;
+	
+	def pairings = maps.collect { map -> bots.collect { bot -> [id:gameId++, bot:bot, map:map] } }.flatten()
+	
+	def poolSize = (int)Math.ceil(Runtime.getRuntime().availableProcessors()/2)
+	println "Using a pool size of $poolSize (two cores per game)"
+	GParsPool.withPool(poolSize) {
+		pairings.eachParallel { pairing ->
+			println "START Game $pairing.id Map $pairing.map Vs $pairing.bot..."
+			def process = ["python",
+				"tools/playgame.py",
+				"java -jar bots/${pairing.bot}.jar",
+				"java -jar build/libs/MyBot.jar",
+				"--map_file",
+				"tools/maps/${pairing.map}.map",
+				"--log_dir",
+				"game_logs",
+				"--game=${pairing.id++}",
+				"--turns",
+				"500",
+				"--player_seed",
+				"7",
+/*				"--verbose",*/
+/*				"-e",*/
+				"-E",
+				"--nolaunch"].execute()
+			process.consumeProcessOutput()
+			process.waitFor()
+			println "\tEND Game $pairing.id Map $pairing.map Vs $pairing.bot!"
+		}
+	}
+	
+	/*
+	def processes = bots.collect { bot ->
+		maps.collect { map ->
+			def process = ["python",
+				"tools/playgame.py",
+				"java -jar bots/${bot}.jar",
+				"java -jar build/libs/MyBot.jar",
+				"--map_file",
+				"tools/maps/${map}.map",
+				"--log_dir",
+				"game_logs",
+				"--game=${gameId++}",
+				"--turns",
+				"500",
+				"--player_seed",
+				"7",
+				"--verbose",
+				"-e"].execute()
+			process.consumeProcessOutput()
+			process
+		}
+	}.flatten()
+	processes*.waitFor()
+	*/
 }
