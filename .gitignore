@@ -1,5 +1,7 @@
 *.iml
+*.ipr
 *.iws
 .gradle/
 build/
 game_logs/
+out/
