@@ -12,8 +12,18 @@ import java.util.*;
 public class HeatMap {
 
     private int[][] heatMap;
+    private int rows;
+    private int cols;
 
     private static Map<Integer, HeatMap> heatMaps = new HashMap<Integer, HeatMap>();
+    private static HeatMap myHeatMap;
+
+    public static HeatMap getMyHeat(Ants ants) {
+        if (myHeatMap == null) {
+            myHeatMap = new HeatMap(ants.getMyAnts(), ants.getAttackOffsets(), ants.getRows(), ants.getCols());
+        }
+        return myHeatMap;
+    }
 
     public static HeatMap getHeat(Ants ants, int me) {
         HeatMap retValue = heatMaps.get(me);
@@ -26,6 +36,7 @@ public class HeatMap {
 
     public static void clearTurn() {
         heatMaps.clear();
+        myHeatMap = null;
     }
 
 
@@ -51,6 +62,8 @@ public class HeatMap {
     }
 
     private void init(Set<Tile> enemyAnts, Set<Tile> attackOffsets, int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
         heatMap = new int[rows][cols];
         for (int[] row : heatMap) {
             Arrays.fill(row, 0);
@@ -69,6 +82,8 @@ public class HeatMap {
 
 
     public int exposure(int row, int col) {
+        row = (row + rows) % rows;
+        col = (col + cols) % cols;
         return heatMap[row][col];
     }
 

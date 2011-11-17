@@ -6,6 +6,7 @@ import ants.Ilk;
 import ants.Tile;
 import map.AntMap;
 import map.WorldMap;
+import subsume.fight.FightState;
 import util.Print;
 import util.TurnCount;
 
@@ -13,6 +14,8 @@ import java.util.*;
 
 public class Ant {
     private static int ID = 0;
+    public static boolean reinforcementLearning = true;
+
 
     int id = ID++;
     Ants ants;
@@ -20,6 +23,7 @@ public class Ant {
     Decision currentDecision;
     AntMap nextTurn;
 
+    Fight fight=new Fight(this);
     Layer defendHill = new DefendHill(this);
     Layer attackHill = new AttackCloseHill(this);
     Layer seekFood = new SeekFood(this);
@@ -50,7 +54,7 @@ public class Ant {
     public Aim resolve() {
         //help debugging
         if (TurnCount.count == TurnCount.turnStop) {
-                if (TurnCount.tilestop != null && tile.equals(TurnCount.tilestop)) {
+            if (TurnCount.tilestop != null && tile.equals(TurnCount.tilestop)) {
                 Print.println("reached break condition");
             }
         }
@@ -182,4 +186,7 @@ public class Ant {
     }
 
 
+    public FightState getLastFightState() {
+        return fight.getLastState();
+    }
 }

@@ -2,9 +2,9 @@ package subsume.fight;
 
 import subsume.Decision;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class QValueRepo {
     private static Double defaultValue = 0d;
@@ -33,11 +33,37 @@ public class QValueRepo {
     }
 
 
-    //TODO
-    public Set<Decision> getBestDecisions(CondensedState inAim) {
+    public Map<Double,Set<Decision>> getBestDecisions(CondensedState inAim) {
         Map<Decision, Double> decisions = repo.get(inAim);
-        for (Decision decision:decisions.keySet()){
+        if (decisions == null) {
+            return new HashMap<Double, Set<Decision>>();
         }
-        return null;
+        Map<Double, Set<Decision>> sorted = new HashMap<Double, Set<Decision>>();
+        for (Map.Entry<Decision, Double> decision : decisions.entrySet()) {
+            Set<Decision> sortedDecisions = sorted.get(decision.getValue());
+            if (sortedDecisions == null) {
+                sortedDecisions = new HashSet<Decision>();
+                sorted.put(decision.getValue(), sortedDecisions);
+            }
+            sortedDecisions.add(decision.getKey());
+        }
+        List<Double> sortedKeys = new ArrayList<Double>(sorted.keySet());
+        Collections.sort(sortedKeys);
+        Double max = sortedKeys.get(sortedKeys.size() - 1);
+        Map<Double,Set<Decision>>retValue=new HashMap<Double, Set<Decision>>();
+        retValue.put(max,sorted.get(max));
+        return retValue;
+    }
+
+    public void writeTo(BufferedWriter writer) throws IOException {
+        for (Map.Entry<CondensedState, Map<Decision, Double>> entry : repo.entrySet()) {
+            writer.write(entry.getKey().asChars());
+            writer.newLine();
+            for (Map.Entry<Decision, Double> qValue : entry.getValue().entrySet()) {
+                writer.write(qValue.getKey().toString());
+                //TODO...
+
+            }
+        }
     }
 }

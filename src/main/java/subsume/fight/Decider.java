@@ -4,9 +4,7 @@ import ants.Aim;
 import subsume.Decision;
 import subsume.Deterministic;
 
-import java.util.Collections;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 //that's where the reinforcement learning action resides? NOT.
 
@@ -18,7 +16,7 @@ import java.util.Set;
 
 public class Decider {
 
-    private static Random random=new Random(0);
+    private static Random random = new Random(0);
 
     private static float chanceOfRandom = 0.2f;
 
@@ -26,7 +24,7 @@ public class Decider {
         chanceOfRandom = chance;
     }
 
-    //TODO
+    //TODO glue
     private QValueRepo qValueRepo;
 
     //apply greedy policy or random choice
@@ -40,9 +38,11 @@ public class Decider {
 
     //get the decision that maximizes the value...
     private Set<Decision> greedyPolicy(CondensedState inAim) {
-        qValueRepo.getBestDecisions(inAim);
-
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        Map<Double, Set<Decision>> bestDecisions = qValueRepo.getBestDecisions(inAim);
+        if (bestDecisions.isEmpty()) {
+            return new HashSet<Decision>();
+        }
+        return bestDecisions.values().iterator().next();
     }
 
     private Decision randomDecision() {

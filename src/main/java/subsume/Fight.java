@@ -7,6 +7,8 @@ import subsume.fight.HeatMap;
 
 public class Fight extends Layer {
 
+    FightState lastState;
+
     public Fight(Ant ant) {
         super(ant);
     }
@@ -14,6 +16,7 @@ public class Fight extends Layer {
     @Override
     protected Decision output() {
         FightState state = getFightState();
+        lastState = state;
         return pickDecision(state);
     }
 
@@ -28,16 +31,18 @@ public class Fight extends Layer {
         HeatMap myEnemies = getEnemiesHeat();
         HeatMap myAnts = getMyHeat();
 
-        return FightState.fromHeatMaps(myAnts, myEnemies);
+        return FightState.fromHeatMaps(ant,myAnts, myEnemies);
     }
 
-    //TODO
     private HeatMap getMyHeat() {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return HeatMap.getMyHeat(ant.ants);
     }
 
     private HeatMap getEnemiesHeat() {
         return HeatMap.getHeat(ant.ants, Owner.ME);  //To change body of created methods use File | Settings | File Templates.
     }
 
+    public FightState getLastState() {
+        return lastState;
+    }
 }

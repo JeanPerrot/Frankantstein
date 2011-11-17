@@ -6,6 +6,8 @@ import java.util.Arrays;
 public class CondensedState {
     private char[] state;
 
+    //TODO - constructor...
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -21,5 +23,9 @@ public class CondensedState {
     @Override
     public int hashCode() {
         return state != null ? Arrays.hashCode(state) : 0;
+    }
+
+    public char[] asChars(){
+        return state;
     }
 }

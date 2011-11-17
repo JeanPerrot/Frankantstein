@@ -5,7 +5,10 @@ import map.CostMap;
 import map.HillEnemiesCache;
 import map.PheromoneMap;
 import subsume.Ant;
+import subsume.fight.FightState;
 import subsume.fight.HeatMap;
+import subsume.fight.QLearning;
+import subsume.fight.Reward;
 import util.Print;
 import util.TurnCount;
 
@@ -51,11 +54,12 @@ public class MyBot extends Bot {
         HillEnemiesCache.get(gameState).clear();
         PheromoneMap.getPheromoneMap(gameState).markTerritory(gameState.getMyAnts());
 
-
         thisTurn = nextTurn;
         nextTurn = new AntMap();
-
         List<Ant> ants = getMyAnts();
+
+        doReinforcementLearning();
+
         for (Ant ant : ants) {
             if (System.currentTimeMillis() - time > 230) {
                 Print.println("**********************TIMEOUT PROTECTION KICKING IN********************************");
@@ -66,6 +70,21 @@ public class MyBot extends Bot {
         for (Ant ant : ants) {
             ant.issueOrder();
         }
+    }
+
+    private void doReinforcementLearning() {
+        if (!Ant.reinforcementLearning) return;
+        for (Ant ant:thisTurn.getAnts()){
+            Double reward= Reward.getReward(ant);
+            //null reward means not applicable
+            if (reward==null){
+                continue;
+            }
+            //get the previous fighting state from somewhere
+            FightState previousState=ant.getLastFightState();
+            QLearning.learn(previousState, ant.getCurrentDecision(),reward);
+        }
+
     }
 
     /**

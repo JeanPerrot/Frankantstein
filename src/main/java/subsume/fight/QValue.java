@@ -2,6 +2,7 @@ package subsume.fight;
 
 import subsume.Decision;
 
+//TODO - do I need that?
 public class QValue {
 
     private final CondensedState state;
