@@ -15,7 +15,7 @@ public class WorldMap {
     private Ilk[][] world;
     private boolean[][] explored;
     private int totalExplored = 0;
-    private Set<Tile>enemyHills=new HashSet<Tile>();
+    private Set<Tile> enemyHills = new HashSet<Tile>();
 
     public WorldMap(int rows, int cols) {
         this.cols = cols;
@@ -48,12 +48,14 @@ public class WorldMap {
     public Tile getTile(int row, int col) {
         if (row < 0) row += rows;
         row = row % rows;
-        if (col<0) col+=cols;
+        if (col < 0) col += cols;
         col = col % cols;
         return new Tile(row, col);
     }
 
     public Ilk getIlk(int row, int col) {
+        row = (row + rows) % rows;
+        col = (col + cols) % cols;
         return world[row][col];
     }
 
@@ -71,7 +73,7 @@ public class WorldMap {
         enemyHills.add(tile);
     }
 
-    public void removeEnemyHill(Tile tile){
+    public void removeEnemyHill(Tile tile) {
         enemyHills.remove(tile);
     }
 
