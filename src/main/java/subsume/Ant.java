@@ -67,12 +67,13 @@ public class Ant {
         if (currentDecision.dontKnow()) {
             currentDecision = seekFood.decide();
         }
-        if (currentDecision.dontKnow()) {
-            currentDecision = explore.decide();
-        }
+        // this is improved, but to use it we need a competent enemy-aware strategy
 //        if (currentDecision.dontKnow()) {
 //            currentDecision = attackDistantHill.decide();
 //        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = explore.decide();
+        }
 
 //        if (currentDecision.dontKnow()) {
 //            currentDecision = avoidPheromone.decide();

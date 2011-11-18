@@ -104,6 +104,7 @@ task rate(dependsOn: jar) << {
 			
 			def ourScore = json.score[ourRange].max()
 			def theirScore = json.score[theirRange].max()
+			def bestScore = json.score.max()
 			if (ourScore > theirScore) {
 				pairing.result = "WIN"
 			//	pairing.rating = 1 - pairing.turns/2000
@@ -118,7 +119,9 @@ task rate(dependsOn: jar) << {
 			def rankEnding = [1:'st', 2:'nd', 3:'rd'].withDefault { 'th' }
 			pairing.result = rank + rankEnding[rank]+ " of "+players
 			pairing.antsPerTurn = ((int)(100*pairing.totalAnts/pairing.turns))/100
-			pairing.rating = ((int)(10000 * ((ourScore / theirScore)+(pairing.antsPerTurn/10))))/10000 
+/*			println "ourScore $ourScore bestScore $bestScore antsPerTurn $pairing.antsPerTurn rating ???"*/
+			pairing.rating = ((int)(10000 * ((ourScore / bestScore)+(pairing.antsPerTurn/10))))/10000 
+/*			println "ourScore $ourScore theirScore $theirScore antsPerTurn $pairing.antsPerTurn rating $pairing.rating"*/
 		
 			while(undisplayed && undisplayed[0].result) {
 				println renderPairing(undisplayed.remove(0))
