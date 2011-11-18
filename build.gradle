@@ -39,40 +39,44 @@ task srcZip(type: Zip) {
 }
 
 task rate(dependsOn: jar) << {
-	def bots = [/*"merv-v3", "flightBot-v6",*/ "merv-v11", "MyBot-5", "zombie"] 
-	def maps = ["random_walk/random_walk_02p_01", "multi_hill_maze/maze_02p_01", "maze/maze_02p_01"]
-	//maps.addAll( maps.collect { it.replace('02','04') })
-
-//	def bots = ["zombie"] 
-//	def maps = ["random_walk/random_walk_02p_01"]
+	def bots = ["merv-v11", "MyBot-5", "merv-v3", "flightBot-v6"]
+	def maps = [
+		[name:"multi_hill_maze/maze_02p_01", multi_hill:true, maze:true, players:2],
+		[name:"random_walk/random_walk_04p_01", random_walk:true, players:4],
+		[name:"multi_hill_maze/maze_04p_01", multi_hill:true, maze:true, players:4],
+		[name:"maze/maze_04p_01", maze:true, players:4],
+		[name:"random_walk/random_walk_08p_01", random_walk:true, players:8],
+		[name:"maze/maze_08p_01", maze:true, players:8]]
 
 	def gameId = 100;
 	
-	def pairings = bots.collect { bot -> maps.collect { map -> [id:gameId++, bot:bot, map:map] } }.flatten()
+	def pairings = maps.collect { map -> [id:gameId++, map:map] }.flatten()
 	
 	def nextGameIdToDisplay = 100;
 	
-	def poolSize = (int)Math.ceil(Runtime.getRuntime().availableProcessors()/2)
-	println "Using a pool size of $poolSize (two cores per game)"
+	def poolSize = (int)Math.ceil(Runtime.getRuntime().availableProcessors()/4)
+	println "Using a pool size of $poolSize (four cores per game)"
 	
 	println()
 	println "Results:"
-	println "GameId\tRating\tResult\tTurns\tBot      \t${'Map'.padRight(30, ' ')}\tReplay\tLog\tStatus"
+	println "GameId\tRating\tResult\t\tTurns\t${'Map'.padRight(30, ' ')}\tReplay\tLog\tStatus"
 	
 	def undisplayed = []
 	undisplayed.addAll(pairings)
 	
+	def renderPairing = { pairing ->
+		"${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.map.name.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status}"
+	}
 	GParsPool.withPool(poolSize) {
 		pairings.eachParallel { pairing ->
-/*			println "START Game $pairing.id Map $pairing.map Vs $pairing.bot..."*/
-			def repeats = 1; //pairing.contains("p04") ? 2 : 1)	
+			def players = pairing.map.players	
 			def args = ["python",
 				"tools/playgame.py"]
-			repeats.times { args << "java -jar bots/${pairing.bot}.jar" }
-			repeats.times { args << "java -jar build/libs/MyBot.jar" }
+			args << "java -jar build/libs/MyBot.jar"
+			(players-1).times { i -> args << "java -jar bots/${bots[i%bots.size()]}.jar" }			
 			args.addAll(
 				["--map_file",
-				"tools/maps/${pairing.map}.map",
+				"tools/maps/${pairing.map.name}.map",
 				"--log_dir",
 				"game_logs",
 				"--game=${pairing.id}",
@@ -83,53 +87,55 @@ task rate(dependsOn: jar) << {
 				"--engine_seed=1234",
 				"-E",
 				"--nolaunch"])
-			def process = args.execute()
-			process.consumeProcessOutput()
-			process.waitFor()
+			//println args.join(' ')
+/*			def process = args.execute()*/
+/*			process.consumeProcessOutput(System.out, System.out)*/
+/*			process.waitFor()*/
 			
 			def json = new JsonSlurper().parseText(new File("game_logs/${pairing.id}.replay").text)
-			pairing.status = [us:json.status[1], them:json.status[0]]
-			pairing.turns = json.playerturns[0]
-			if (json.score[1] > json.score[0]) {
+			def ourRange = 0..0
+			def theirRange = 1..-1
+//			println theirRange +" & "+json.status
+			pairing.status = [us:json.status[ourRange], them:json.status[theirRange]].collectEntries { k, v -> [k, v.findAll { !(it in ['survived', 'eliminated']) }] }
+			pairing.turns = json.playerturns[ourRange].max()
+			def ourScore = json.score[ourRange].max()
+			def theirScore = json.score[theirRange].max()
+			if (ourScore > theirScore) {
 				pairing.result = "WIN"
-				pairing.rating = 1 - pairing.turns/2000
-			} else  if (json.score[1] == json.score[0]) {
+			//	pairing.rating = 1 - pairing.turns/2000
+			} else  if (ourScore == theirScore) {
 				pairing.result = "DRAW"
-				pairing.rating = 0
+			//	pairing.rating = 0
 			} else {
 				pairing.result = "LOSE"
-				pairing.rating = -1 + pairing.turns/2000
+			//	pairing.rating = -1 + pairing.turns/2000
 			}
-/*			println "\tEND Game $pairing.id Map $pairing.map Vs $pairing.bot! ($pairing)"*/
-/*			println "$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t$pairing.map"*/
-			
+			def rank = players - json.score.sort().indexOf(ourScore)
+			def rankEnding = [1:'st', 2:'nd', 3:'rd'].withDefault { 'th' }
+			pairing.result = rank + rankEnding[rank]+ " of "+players
+			pairing.rating = ((int)(10000 * ourScore / theirScore))/10000
+		
 			while(undisplayed && undisplayed[0].result) {
-				pairing = undisplayed.remove(0)
-				println "${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t${pairing.map.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status.findAll { !(it.value in ['survived', 'eliminated']) }}"
+				println renderPairing(undisplayed.remove(0))
 			}
 		}
 	}
 	while(undisplayed && undisplayed[0].result) {
-		pairing = undisplayed.remove(0)
-		println "${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t${pairing.map.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status.findAll { !(it.value in ['survived', 'eliminated']) }}"
+		println renderPairing(undisplayed.remove(0))
 	}
 	println()
 
-//	pairings.each { pairing -> println "${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t${pairing.map.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status.findAll { !(it.value in ['survived', 'eliminated']) }}" }
-	def ratingByMap = pairings.groupBy { it.map }.collectEntries { [it.key, it.value.sum { it.rating } / it.value.size()] }
-	def ratingByBot = pairings.groupBy { it.bot }.collectEntries { [it.key, it.value.sum { it.rating } / it.value.size()] }
+	println()
+	def ratingByPlayers = pairings.groupBy { it.map.players }.collectEntries { [it.key, it.value.sum { it.rating } / it.value.size()] }
+	ratingByPlayers.each { players, rating -> println "Rating on $players player maps = $rating" }
 	
 	println()
-	
-	ratingByMap.each { map, rating -> println "Rating on ${map.padRight(30, ' ')} = $rating" }
-	
+	def types = ['maze':0, 'multi_hill':0, 'random_walk':0]
+	pairings.each { pairing -> types.each { k, v -> if (pairing.map[k]) types[k]+=pairing.rating } }
+	types.each { k, v -> println( "Rating on $k maps ".padRight(27,' ')+" = ${v / pairings.findAll { it.map[k] }.size()}" )}
+
 	println()
-	
-	ratingByBot.each { bot, rating -> println "Rating vs ${bot.padRight(15, ' ')} = $rating" }
-	
 	def rating = pairings.sum { pairing -> pairing.rating } / pairings.size()
-	
-	println()
 	println "Overall Rating = $rating"
 }
 
