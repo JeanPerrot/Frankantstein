@@ -41,12 +41,14 @@ task srcZip(type: Zip) {
 task rate(dependsOn: jar) << {
 	def bots = ["merv-v11", "MyBot-5", "merv-v3", "flightBot-v6"]
 	def maps = [
+		[name:"maze/maze_02p_02", maze:true, players:2],
+		[name:"random_walk/random_walk_02p_01", random_walk:true,players:2],
 		[name:"multi_hill_maze/maze_02p_01", multi_hill:true, maze:true, players:2],
-		[name:"random_walk/random_walk_04p_01", random_walk:true, players:4],
-		[name:"multi_hill_maze/maze_04p_01", multi_hill:true, maze:true, players:4],
 		[name:"maze/maze_04p_01", maze:true, players:4],
-		[name:"random_walk/random_walk_08p_01", random_walk:true, players:8],
-		[name:"maze/maze_08p_01", maze:true, players:8]]
+		[name:"random_walk/random_walk_04p_02", random_walk:true, players:4],
+		[name:"multi_hill_maze/maze_04p_01", multi_hill:true, maze:true, players:4],
+		[name:"maze/maze_08p_01", maze:true, players:8],
+		[name:"random_walk/random_walk_08p_02", random_walk:true, players:8]]
 
 	def gameId = 100;
 	
@@ -59,13 +61,13 @@ task rate(dependsOn: jar) << {
 	
 	println()
 	println "Results:"
-	println "GameId\tRating\tResult\t\tTurns\t${'Map'.padRight(30, ' ')}\tReplay\tLog\tStatus"
+	println "GameId\tRating\tResult\t\tTurns\tAnts\tAnts/Turn\t${'Map'.padRight(30, ' ')}\tReplay\tLog\tStatus"
 	
 	def undisplayed = []
 	undisplayed.addAll(pairings)
 	
 	def renderPairing = { pairing ->
-		"${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.map.name.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status}"
+		"${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.totalAnts}\t${pairing.antsPerTurn}\t\t${pairing.map.name.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status}"
 	}
 	GParsPool.withPool(poolSize) {
 		pairings.eachParallel { pairing ->
@@ -87,10 +89,10 @@ task rate(dependsOn: jar) << {
 				"--engine_seed=1234",
 				"-E",
 				"--nolaunch"])
-			//println args.join(' ')
-/*			def process = args.execute()*/
-/*			process.consumeProcessOutput(System.out, System.out)*/
-/*			process.waitFor()*/
+//			println args.join(' ')
+			def process = args.execute()
+			process.consumeProcessOutput(System.out, System.out)
+			process.waitFor()
 			
 			def json = new JsonSlurper().parseText(new File("game_logs/${pairing.id}.replay").text)
 			def ourRange = 0..0
@@ -98,6 +100,8 @@ task rate(dependsOn: jar) << {
 //			println theirRange +" & "+json.status
 			pairing.status = [us:json.status[ourRange], them:json.status[theirRange]].collectEntries { k, v -> [k, v.findAll { !(it in ['survived', 'eliminated']) }] }
 			pairing.turns = json.playerturns[ourRange].max()
+			pairing.totalAnts = json.replaydata.ants.findAll { it[4] == 0 }.size()
+			
 			def ourScore = json.score[ourRange].max()
 			def theirScore = json.score[theirRange].max()
 			if (ourScore > theirScore) {
@@ -113,7 +117,8 @@ task rate(dependsOn: jar) << {
 			def rank = players - json.score.sort().indexOf(ourScore)
 			def rankEnding = [1:'st', 2:'nd', 3:'rd'].withDefault { 'th' }
 			pairing.result = rank + rankEnding[rank]+ " of "+players
-			pairing.rating = ((int)(10000 * ourScore / theirScore))/10000
+			pairing.antsPerTurn = ((int)(100*pairing.totalAnts/pairing.turns))/100
+			pairing.rating = ((int)(10000 * ((ourScore / theirScore)+(pairing.antsPerTurn/10))))/10000 
 		
 			while(undisplayed && undisplayed[0].result) {
 				println renderPairing(undisplayed.remove(0))
@@ -144,7 +149,9 @@ task rate(dependsOn: jar) << {
 tasks.addRule("Pattern: view<GameID>") { String taskName ->
     if (taskName.startsWith("view")) {
         task(taskName) << {
-			"java -jar tools/visualizer.jar game_logs/${taskName - 'view'}.replay".execute().waitFor()
+			def process = "java -jar tools/visualizer.jar game_logs/${taskName - 'view'}.replay".execute()
+			process.consumeProcessOutput()
+			process.waitFor()
         }
     }
 }
