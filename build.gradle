@@ -39,8 +39,9 @@ task srcZip(type: Zip) {
 }
 
 task rate(dependsOn: jar) << {
-	def bots = ["zombie", "merv-v3", "flightBot-v6", "merv-v11", "MyBot-5"] 
+	def bots = [/*"merv-v3", "flightBot-v6",*/ "merv-v11", "MyBot-5", "zombie"] 
 	def maps = ["random_walk/random_walk_02p_01", "multi_hill_maze/maze_02p_01", "maze/maze_02p_01"]
+	//maps.addAll( maps.collect { it.replace('02','04') })
 
 //	def bots = ["zombie"] 
 //	def maps = ["random_walk/random_walk_02p_01"]
@@ -64,11 +65,13 @@ task rate(dependsOn: jar) << {
 	GParsPool.withPool(poolSize) {
 		pairings.eachParallel { pairing ->
 /*			println "START Game $pairing.id Map $pairing.map Vs $pairing.bot..."*/
-			def process = ["python",
-				"tools/playgame.py",
-				"java -jar bots/${pairing.bot}.jar",
-				"java -jar build/libs/MyBot.jar",
-				"--map_file",
+			def repeats = 1; //pairing.contains("p04") ? 2 : 1)	
+			def args = ["python",
+				"tools/playgame.py"]
+			repeats.times { args << "java -jar bots/${pairing.bot}.jar" }
+			repeats.times { args << "java -jar build/libs/MyBot.jar" }
+			args.addAll(
+				["--map_file",
 				"tools/maps/${pairing.map}.map",
 				"--log_dir",
 				"game_logs",
@@ -79,7 +82,8 @@ task rate(dependsOn: jar) << {
 				"7",
 				"--engine_seed=1234",
 				"-E",
-				"--nolaunch"].execute()
+				"--nolaunch"])
+			def process = args.execute()
 			process.consumeProcessOutput()
 			process.waitFor()
 			
@@ -104,6 +108,10 @@ task rate(dependsOn: jar) << {
 				println "${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t${pairing.map.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status.findAll { !(it.value in ['survived', 'eliminated']) }}"
 			}
 		}
+	}
+	while(undisplayed && undisplayed[0].result) {
+		pairing = undisplayed.remove(0)
+		println "${pairing.id}\t$pairing.rating\t$pairing.result\t$pairing.turns\t${pairing.bot.padRight(10, ' ')}\t${pairing.map.padRight(30, ' ')}\tview${pairing.id}\tlog${pairing.id}\t${pairing.status.findAll { !(it.value in ['survived', 'eliminated']) }}"
 	}
 	println()
 
