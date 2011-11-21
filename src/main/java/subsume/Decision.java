@@ -11,8 +11,8 @@ public class Decision {
         return new Decision(aim, Action.MOVE);
     }
 
-    Aim aim;
-    Action action;
+    public Aim aim;
+    public Action action;
 
     public Decision(Aim aim, Action action) {
         this.aim = aim;
@@ -21,6 +21,10 @@ public class Decision {
 
     public boolean dontKnow(){
         return this.action.equals(Action.DONTKNOW);
+    }
+
+    public boolean stay() {
+        return this.action.equals(Action.STAY);
     }
 
     public static enum Action {MOVE, STAY, DONTKNOW}

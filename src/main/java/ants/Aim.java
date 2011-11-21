@@ -69,6 +69,12 @@ public enum Aim {
         return values()[newIndex];
     }
 
+    //otherAim is using this Aim as a referential, seeing it as 'NORTH'. give the true aim.
+    public Aim rotate(Aim otherAim){
+        return otherAim.turn(index);
+    }
+
+
 
     /**
      * Returns rows delta.
@@ -107,5 +113,7 @@ public enum Aim {
         return symbolLookup.get(symbol);
     }
 
-
+    public int getIndex() {
+        return index;
+    }
 }

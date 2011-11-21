@@ -72,7 +72,7 @@ public class HeatMap {
         for (Tile tile : enemyAnts) {
             for (Tile offset : attackOffsets) {
                 int row = tile.getRow() + offset.getRow();
-                int col = tile.getRow() + offset.getRow();
+                int col = tile.getCol() + offset.getCol();
                 row = (row + rows) % rows;
                 col = (col + cols) % cols;
                 heatMap[row][col] = heatMap[row][col] + 1;

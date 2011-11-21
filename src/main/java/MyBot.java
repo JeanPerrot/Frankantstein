@@ -26,7 +26,6 @@ public class MyBot extends Bot {
     AntMap thisTurn;
     Ants gameState;
 
-
     /**
      * Main method executed by the game engine for starting the bot.
      *
@@ -60,8 +59,9 @@ public class MyBot extends Bot {
         doReinforcementLearning();
 
         for (Ant ant : ants) {
-            if (System.currentTimeMillis() - time > 230) {
+            if (gameState.getTimeRemaining() < 10) {
                 Print.println("**********************TIMEOUT PROTECTION KICKING IN********************************");
+                break;
 //                throw new RuntimeException("timeout");
             }
             ant.resolve();
@@ -74,14 +74,15 @@ public class MyBot extends Bot {
     private void doReinforcementLearning() {
 
         if (!Ant.reinforcementLearning) return;
-        for (Ant ant:thisTurn.getAnts()){
-            Double reward= Reward.getReward(ant);
+        for (Ant ant : thisTurn.getAnts()) {
+            Double reward = Reward.getReward(ant);
             //null reward means not applicable
-            if (reward==null){
+            if (reward == null) {
                 continue;
             }
             //get the previous fighting state from somewhere
-            FightState previousState=ant.getLastFightState();
+            FightState previousState = ant.getLastFightState();
+            //TODO
 //            QLearning.learn(previousState, ant.getCurrentDecision(),reward);
         }
 
@@ -113,5 +114,4 @@ public class MyBot extends Bot {
         }
         return retValue;
     }
-
 }

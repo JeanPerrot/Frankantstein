@@ -31,7 +31,7 @@ public class Fight extends Layer {
         HeatMap myEnemies = getEnemiesHeat();
         HeatMap myAnts = getMyHeat();
 
-        return FightState.fromHeatMaps(ant,myAnts, myEnemies);
+        return FightState.fromHeatMaps(ant, myAnts, myEnemies, ant.getWorldMap());
     }
 
     private HeatMap getMyHeat() {
@@ -39,7 +39,7 @@ public class Fight extends Layer {
     }
 
     private HeatMap getEnemiesHeat() {
-        return HeatMap.getHeat(ant.ants, Owner.ME);  //To change body of created methods use File | Settings | File Templates.
+        return HeatMap.getHeat(ant.ants, Owner.ME);
     }
 
     public FightState getLastState() {

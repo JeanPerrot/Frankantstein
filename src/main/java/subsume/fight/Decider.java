@@ -28,11 +28,16 @@ public class Decider {
     private QValueRepo qValueRepo;
 
     //apply greedy policy or random choice
-    public Set<Decision> decide(CondensedState inAim) {
+    public DirectionalDecisions decide(CondensedState inAim) {
+//        return decideReinforcementLearning(inAim);
+        return new FightHeuristics(inAim).applyPolicy();
+    }
+
+
+    private Collection<Decision> decideReinforcementLearning(CondensedState inAim) {
         if (random.nextFloat() < chanceOfRandom) {
             return Collections.singleton(randomDecision());
         }
-
         return greedyPolicy(inAim);
     }
 

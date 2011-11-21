@@ -1,1 +1,1 @@
-python tools/playgame.py "java -jar bots/merv-v3.jar" "java -jar build/libs/MyBot.jar" --map_file tools/maps/maze/maze_02p_01.map --log_dir game_logs --turns 500 --player_seed 7 --verbose -e
+python tools/playgame.py "java -jar bots/MyBot-5.jar" "java -jar build/libs/MyBot.jar" --map_file tools/maps/maze/maze_02p_01.map --log_dir game_logs --turns 500 --player_seed 7 --verbose -e

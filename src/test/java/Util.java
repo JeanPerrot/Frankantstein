@@ -7,8 +7,8 @@ public class Util {
 
     public static void main(String[] args) throws IOException {
         nullSysOut();
-        TurnCount.turnStop = 123;
-        TurnCount.tilestop = new Tile(11, 12);
+        TurnCount.turnStop = 387;
+        TurnCount.tilestop = new Tile(53, 84);
 
         MyBot bot = new MyBot();
         BufferedReader fileReader = new BufferedReader(new FileReader("src/test/java/input.txt"));

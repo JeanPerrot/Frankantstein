@@ -23,7 +23,7 @@ public class Ant {
     Decision currentDecision;
     AntMap nextTurn;
 
-    Fight fight=new Fight(this);
+    Fight fight = new Fight(this);
     Layer defendHill = new DefendHill(this);
     Layer attackHill = new AttackCloseHill(this);
     Layer seekFood = new SeekFood(this);
@@ -36,7 +36,7 @@ public class Ant {
     Layer avoidObstacles = new AvoidObstacles(this);
 
     List<Layer> layers = Arrays.asList(defendHill,
-            attackHill, seekFood, avoidPheromone, occupyTerritory, explore, attackDistantHill, wanderAim, randomWalk, avoidObstacles);
+            attackHill, fight, seekFood, avoidPheromone, occupyTerritory, explore, attackDistantHill, wanderAim, randomWalk, avoidObstacles);
 
 
     public void setAnts(Ants ants) {
@@ -61,6 +61,9 @@ public class Ant {
 
         cleanDecisions();
         currentDecision = defendHill.decide();
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = fight.decide();
+//        }
         if (currentDecision.dontKnow()) {
             currentDecision = attackHill.decide();
         }
