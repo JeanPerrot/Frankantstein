@@ -19,6 +19,11 @@ public class Decider {
     private static Random random = new Random(0);
 
     private static float chanceOfRandom = 0.2f;
+    private boolean suicideOk;
+
+    public Decider(boolean suicideOk) {
+        this.suicideOk = suicideOk;
+    }
 
     public static void setRandomness(float chance) {
         chanceOfRandom = chance;
@@ -30,7 +35,7 @@ public class Decider {
     //apply greedy policy or random choice
     public DirectionalDecisions decide(CondensedState inAim) {
 //        return decideReinforcementLearning(inAim);
-        return new FightHeuristics(inAim).applyPolicy();
+        return new FightHeuristics(inAim).applyPolicy(suicideOk);
     }
 
 

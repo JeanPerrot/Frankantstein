@@ -14,11 +14,11 @@ import java.util.*;
 
 public class Ant {
     private static int ID = 0;
-    public static boolean reinforcementLearning = false;
+    public static boolean reinforcementLearning = true;
 
 
     int id = ID++;
-    Ants ants;
+    public Ants ants;
     Tile tile;
     Decision currentDecision;
     AntMap nextTurn;
@@ -61,14 +61,16 @@ public class Ant {
 
         cleanDecisions();
         currentDecision = defendHill.decide();
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = fight.decide();
-//        }
-        if (currentDecision.dontKnow()) {
-            currentDecision = attackHill.decide();
-        }
+
         if (currentDecision.dontKnow()) {
             currentDecision = seekFood.decide();
+        }
+
+        if (currentDecision.dontKnow()) {
+            currentDecision = fight.decide();
+        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = attackHill.decide();
         }
         // this is improved, but to use it we need a competent enemy-aware strategy
 //        if (currentDecision.dontKnow()) {
@@ -78,19 +80,19 @@ public class Ant {
             currentDecision = explore.decide();
         }
 
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = avoidPheromone.decide();
-//        }
         if (currentDecision.dontKnow()) {
-            currentDecision = occupyTerritory.decide();
+            currentDecision = avoidPheromone.decide();
         }
+//        if (currentDecision.dontKnow()) {
+//            currentDecision = occupyTerritory.decide();
+//        }
         if (currentDecision.dontKnow()) {
             currentDecision = wanderAim.decide();
         }
 
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = randomWalk.decide();
-//        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = randomWalk.decide();
+        }
         currentDecision = avoidObstacles.decide();
         markNextLocation();
         explain();

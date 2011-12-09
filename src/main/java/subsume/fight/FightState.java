@@ -59,14 +59,14 @@ public class FightState {
                 data[i][j] = c;
             }
         }
-        buildDirectionalStates();
         int index = 0;
         for (Aim aim : Aim.values()) {
             int row = center.getRow() + aim.getRowDelta();
             int col = center.getCol() + aim.getColDelta();
 
-            land[index++] = !worldMap.getIlk(row, col).isPassable();
+            land[index++] = worldMap.getIlk(row, col).isPassable();
         }
+        buildDirectionalStates();
     }
 
     private void buildDirectionalStates() {

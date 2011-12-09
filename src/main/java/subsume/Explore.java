@@ -37,6 +37,7 @@ public class Explore extends Layer {
     }
 
     private void assignGoal() {
+        Print.println("assigning explore goal "+goal);
         exploreTrack.assign(goal, ant);
         CostMap.getExploreMap(ant.ants, exploreTrack).assign(goal);
     }

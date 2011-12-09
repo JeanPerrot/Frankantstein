@@ -3,6 +3,7 @@ package map;
 import ants.Ants;
 import ants.Tile;
 import subsume.GoalTracker;
+import subsume.algo.TrueWalk;
 
 import java.util.Arrays;
 
@@ -31,18 +32,24 @@ public class UnExploredMap extends CostMap {
         return costs[tile.getRow()][tile.getCol()];
     }
 
+    private void paintCosts(Tile costItem, int dimension, final int newCost) {
+        TrueWalk.Action action = new TrueWalk.Action() {
+            @Override
+            public void perform(Tile tile, int cost) {
+                costs[tile.getRow()][tile.getCol()] = newCost;
+            }
+        };
+        new TrueWalk(map).nearWalk(costItem, dimension, action);
+    }
+
     public void assign(Tile assigned) {
-        for (Tile offset : ants.getVisionOffsets()) {
-            Tile willBeVisible = ants.getTile(assigned, offset);
-            costs[willBeVisible.getRow()][willBeVisible.getCol()] = 1;
-        }
+        int viewRadius=7;
+        paintCosts(assigned,viewRadius,1);
     }
 
     public void unassign(Tile goal) {
-        for (Tile offset : ants.getVisionOffsets()) {
-            Tile visibleFromGoal = ants.getTile(goal, offset);
-            costs[visibleFromGoal.getRow()][visibleFromGoal.getCol()] = 0;
-        }
+        int viewRadius=7;
+        paintCosts(goal,viewRadius,0);
     }
 
     @Override

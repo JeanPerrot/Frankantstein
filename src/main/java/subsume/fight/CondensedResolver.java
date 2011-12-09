@@ -9,11 +9,14 @@ import java.util.*;
 public class CondensedResolver {
     //TODO right representation?
     private Map<Aim, DirectionalDecisions> decisions = new HashMap<Aim, DirectionalDecisions>();
-    private Decider decider = new Decider();
+    private Decider decider;
     private FightState state;
+    private boolean suicideOk;
 
-    public CondensedResolver(FightState state) {
+    public CondensedResolver(FightState state, boolean suicideOk) {
         this.state = state;
+        this.suicideOk = suicideOk;
+        decider=new Decider(suicideOk);
     }
 
     public void decideDirectionally(FightState state, Aim aim) {

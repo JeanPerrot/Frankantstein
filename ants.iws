@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8105562-6f15-4189-9fa4-26585900adec" name="Default" comment="" />
+    <list default="true" id="a8105562-6f15-4189-9fa4-26585900adec" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/tools/maps/dojo3.map" afterPath="$PROJECT_DIR$/tools/maps/dojo/dojo3.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ants.iws" afterPath="$PROJECT_DIR$/ants.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dojo.sh" afterPath="$PROJECT_DIR$/dojo.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maze.sh" afterPath="$PROJECT_DIR$/maze.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/open.sh" afterPath="$PROJECT_DIR$/open.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/MyBot.java" afterPath="$PROJECT_DIR$/src/main/java/MyBot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ants/Ants.java" afterPath="$PROJECT_DIR$/src/main/java/ants/Ants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/map/UnExploredMap.java" afterPath="$PROJECT_DIR$/src/main/java/map/UnExploredMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Ant.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Ant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Explore.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Explore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Fight.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Fight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Util.java" afterPath="$PROJECT_DIR$/src/test/java/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/input.txt" afterPath="$PROJECT_DIR$/src/test/java/input.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial.sh" afterPath="$PROJECT_DIR$/tutorial.sh" />
+    </list>
     <ignored path="ants.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,6 +61,34 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </exception_breakpoints>
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/AbstractSystemInputParser.java" line="155" class="AbstractSystemInputParser" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/Bot.java" line="86" class="Bot" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -93,19 +146,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Fight.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
+      <file leaf-file-name="MyBot.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/MyBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="40" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0">
+            <state line="91" column="25" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FightState.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java">
+      <file leaf-file-name="Reward.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="71" selection-start="657" selection-end="657" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ants.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ants/Ants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="446" column="72" selection-start="12306" selection-end="12306" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ant.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="195" column="29" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fight.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="22" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -114,36 +194,34 @@
       <file leaf-file-name="QLearning.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="84" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+            <state line="36" column="17" selection-start="1217" selection-end="1217" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyBot.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/MyBot.java">
+      <file leaf-file-name="QValueRepo.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="25" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ant.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="52" selection-start="412" selection-end="412" vertical-scroll-proportion="0.19375673">
+            <state line="39" column="72" selection-start="1243" selection-end="1243" vertical-scroll-proportion="0.76501304">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeatMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/HeatMap.java">
+      <file leaf-file-name="CondensedState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0">
+            <state line="58" column="58" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Map.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/classes.jar!/java/util/Map.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="6" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,27 +234,34 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
+    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/map/AntMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/Layer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" />
-        <option value="$PROJECT_DIR$/src/main/java/util/Rotate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QValue.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QValueReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/subsume/Fight.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/HeatMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MyBot.java" />
+        <option value="$PROJECT_DIR$/multi.sh" />
+        <option value="$PROJECT_DIR$/multi8.sh" />
         <option value="$PROJECT_DIR$/src/main/java/subsume/Ant.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" />
+        <option value="$PROJECT_DIR$/dojo.sh" />
+        <option value="$PROJECT_DIR$/src/main/java/MyBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" />
+        <option value="$PROJECT_DIR$/src/test/java/input.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ants/Ants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_INTERNAL" />
   </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
@@ -187,18 +272,18 @@
       <profile-state />
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -214,7 +299,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -243,12 +327,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -257,19 +360,24 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.lastSelected" value="fileTemplates" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/tools/maps/dojo" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="subsume.fight" />
@@ -427,6 +535,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
@@ -458,26 +567,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="65" y="22" width="1375" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30921054" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6253521" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41710526" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3618421" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3778626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31820968" sideWeight="0.5305343" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.54210526" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2977099" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45789474" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46946564" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951653" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3394737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945927" sideWeight="0.6145038" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -529,92 +638,112 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/map/AntMap.java">
+    <entry file="file://$PROJECT_DIR$/dojo.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="31" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Layer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="28" selection-start="622" selection-end="622" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/util/Rotate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="4" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="64" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="10" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="6" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="40" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/HeatMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="71" selection-start="657" selection-end="657" vertical-scroll-proportion="0.0">
+        <state line="0" column="52" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ants/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="84" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/WorldMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="973" selection-end="973" vertical-scroll-proportion="-4.9615383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="0" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-4.9615383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AbstractSystemInputParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="47" selection-start="149" selection-end="149" vertical-scroll-proportion="0.4710145" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="43" selection-start="129" selection-end="129" vertical-scroll-proportion="-1.6295265">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MyBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="25" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="91" column="25" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ants/Ants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="446" column="72" selection-start="12306" selection-end="12306" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="52" selection-start="412" selection-end="412" vertical-scroll-proportion="0.19375673">
+        <state line="195" column="29" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="22" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="17" selection-start="1217" selection-end="1217" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="58" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/classes.jar!/java/util/Map.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="6" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="72" selection-start="1243" selection-end="1243" vertical-scroll-proportion="0.76501304">
           <folding />
         </state>
       </provider>
@@ -649,7 +778,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>daemon lib</last-edited>
+          <last-edited>groovy-1.8.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -661,7 +790,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.5</last-edited>
+          <last-edited>1.6</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -684,7 +813,17 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ProjectJDKs.UI" />
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <splitter-proportions>

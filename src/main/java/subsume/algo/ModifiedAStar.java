@@ -143,10 +143,11 @@ public class ModifiedAStar {
         List<Aim> retValue = new ArrayList<Aim>();
         int index = 0;
         do {
-            Tile begin = path.get(index++);
+            Tile begin = path.get(index);
+            index++;
             Tile end = path.get(index);
             retValue.add(toAim(begin, end));
-        } while (index < path.size() - 2);
+        } while (index < path.size() - 1);
         return retValue;
     }
 

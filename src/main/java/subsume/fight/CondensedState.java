@@ -64,11 +64,16 @@ public class CondensedState {
         return land;
     }
 
+    public boolean isPassable(Aim aim){
+        return land[aim.getIndex()];
+    }
+
     @Override
     public String toString() {
         return "CondensedState{" +
                 "aim=" + aim +
                 ", state=" + new String(state) +
+                ", land=" + land +
                 '}';
     }
 }

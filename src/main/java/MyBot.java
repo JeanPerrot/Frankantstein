@@ -7,6 +7,7 @@ import map.PheromoneMap;
 import subsume.Ant;
 import subsume.fight.FightState;
 import subsume.fight.HeatMap;
+import subsume.fight.QLearning;
 import subsume.fight.Reward;
 import util.Print;
 import util.TurnCount;
@@ -26,6 +27,8 @@ public class MyBot extends Bot {
     AntMap thisTurn;
     Ants gameState;
 
+    QLearning qlearning = new QLearning();
+
     /**
      * Main method executed by the game engine for starting the bot.
      *
@@ -42,7 +45,6 @@ public class MyBot extends Bot {
      */
     @Override
     public void doTurn() {
-        long time = System.currentTimeMillis();
         CostMap.clearTurn();
         HeatMap.clearTurn();
         TurnCount.count++;
@@ -52,16 +54,17 @@ public class MyBot extends Bot {
         HillEnemiesCache.get(gameState).clear();
         PheromoneMap.getPheromoneMap(gameState).markTerritory(gameState.getMyAnts());
 
+        AntMap lastTurn = thisTurn;
         thisTurn = nextTurn;
         nextTurn = new AntMap();
         List<Ant> ants = getMyAnts();
 
-        doReinforcementLearning();
+        doReinforcementLearning(lastTurn);
 
         for (Ant ant : ants) {
-            if (gameState.getTimeRemaining() < 10) {
+            if (gameState.getTimeRemaining() < 25) {
                 Print.println("**********************TIMEOUT PROTECTION KICKING IN********************************");
-                break;
+//                break;
 //                throw new RuntimeException("timeout");
             }
             ant.resolve();
@@ -71,19 +74,22 @@ public class MyBot extends Bot {
         }
     }
 
-    private void doReinforcementLearning() {
+    private void doReinforcementLearning(AntMap lastTurn) {
+        if (lastTurn==null){
+            return;
+        }
+        Print.debug("reinforcement learning...");
 
         if (!Ant.reinforcementLearning) return;
-        for (Ant ant : thisTurn.getAnts()) {
-            Double reward = Reward.getReward(ant);
+        for (Ant ant : lastTurn.getAnts()) {
+            Double reward = Reward.getReward(ant, lastTurn);
             //null reward means not applicable
             if (reward == null) {
                 continue;
             }
             //get the previous fighting state from somewhere
             FightState previousState = ant.getLastFightState();
-            //TODO
-//            QLearning.learn(previousState, ant.getCurrentDecision(),reward);
+            qlearning.learn(previousState, ant.getCurrentDecision(), reward);
         }
 
     }
@@ -104,6 +110,7 @@ public class MyBot extends Bot {
         for (Tile tile : antsTiles) {
             Ant ant = thisTurn.get(tile);
             if (ant == null) {
+                Print.println("no ant found at " + tile + ", creating one");
                 //cute new baby ant
                 ant = new Ant();
             }

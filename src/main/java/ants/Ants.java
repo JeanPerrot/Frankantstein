@@ -1,6 +1,7 @@
 package ants;
 
 import map.WorldMap;
+import util.Print;
 
 import java.util.*;
 
@@ -227,6 +228,8 @@ public class Ants {
         Tile newTile = getTile(tile, direction);
         return map.getIlk(newTile.getRow(), newTile.getCol());
     }
+
+
 
     /**
      * Returns location in the specified direction from the specified location.
@@ -532,6 +535,7 @@ public class Ants {
         }
         Order order = new Order(myAnt, direction);
         orders.add(order);
+//        Print.println(order.toString());
         System.out.println(order);
     }
 

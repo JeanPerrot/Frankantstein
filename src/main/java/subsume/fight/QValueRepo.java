@@ -1,6 +1,8 @@
 package subsume.fight;
 
+import com.google.gson.Gson;
 import subsume.Decision;
+import util.Print;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,6 +12,8 @@ public class QValueRepo {
     private static Double defaultValue = 0d;
 
     private Map<CondensedState, Map<Decision, Double>> repo = new HashMap<CondensedState, Map<Decision, Double>>();
+
+    private Gson gson=new Gson();
 
     public Double getValue(CondensedState state, Decision decision) {
         Map<Decision, Double> valuesMap = repo.get(state);
@@ -23,6 +27,7 @@ public class QValueRepo {
         return value;
     }
 
+    //TODO this doesn't update, it overwrites. not cool
     public void updateValue(CondensedState state, Decision decision, Double value) {
         Map<Decision, Double> valuesMap = repo.get(state);
         if (valuesMap == null) {
@@ -30,10 +35,13 @@ public class QValueRepo {
             repo.put(state, valuesMap);
         }
         valuesMap.put(decision, value);
+
+        //TODO value and decision
+        Print.println(gson.toJson(new LearningTuple(state,value,decision)));
     }
 
 
-    public Map<Double,Set<Decision>> getBestDecisions(CondensedState inAim) {
+    public Map<Double, Set<Decision>> getBestDecisions(CondensedState inAim) {
         Map<Decision, Double> decisions = repo.get(inAim);
         if (decisions == null) {
             return new HashMap<Double, Set<Decision>>();
@@ -50,8 +58,8 @@ public class QValueRepo {
         List<Double> sortedKeys = new ArrayList<Double>(sorted.keySet());
         Collections.sort(sortedKeys);
         Double max = sortedKeys.get(sortedKeys.size() - 1);
-        Map<Double,Set<Decision>>retValue=new HashMap<Double, Set<Decision>>();
-        retValue.put(max,sorted.get(max));
+        Map<Double, Set<Decision>> retValue = new HashMap<Double, Set<Decision>>();
+        retValue.put(max, sorted.get(max));
         return retValue;
     }
 
@@ -64,6 +72,42 @@ public class QValueRepo {
                 //TODO...
 
             }
+        }
+    }
+
+    private static class LearningTuple{
+        private CondensedState state;
+        private Double reward;
+        private Decision decision;
+
+        private LearningTuple(CondensedState state, Double reward, Decision decision) {
+            this.state = state;
+            this.reward = reward;
+            this.decision = decision;
+        }
+
+        public CondensedState getState() {
+            return state;
+        }
+
+        public void setState(CondensedState state) {
+            this.state = state;
+        }
+
+        public Double getReward() {
+            return reward;
+        }
+
+        public void setReward(Double reward) {
+            this.reward = reward;
+        }
+
+        public Decision getDecision() {
+            return decision;
+        }
+
+        public void setDecision(Decision decision) {
+            this.decision = decision;
         }
     }
 }

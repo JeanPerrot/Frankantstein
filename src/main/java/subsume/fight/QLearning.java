@@ -12,20 +12,21 @@ import java.util.Set;
  */
 public class QLearning {
 
-    private QValueRepo repo;
+    private QValueRepo repo=new QValueRepo();
 
     private Double learningRate = 0.5;
     private Double discount = 0.9;
 
     public void learn(FightState state, Decision currentDecision, Double reward) {
-
+        if (state==null){
+        //cute baby ant
+            return;
+        }
         for (Aim aim : Aim.values()) {
             CondensedState directionalState = state.getDirectionalState(aim);
             Decision rotated = Rotate.rotate(currentDecision, aim);
             learn(directionalState, rotated, reward);
         }
-
-        //To change body of created methods use File | Settings | File Templates.
     }
 
     private void learn(CondensedState directionalState, Decision rotated, Double reward) {
