@@ -1,1 +1,1 @@
-    python tools/playgame.py "java -jar build/libs/MyBot.jar" "java -jar bots/merv-v11.jar" --map_file tools/maps/random_walk/random_walk_02p_01.map --log_dir game_logs --turns 1000 --player_seed 7 --verbose -e
+    python tools/playgame.py "java -jar build/libs/MyBot.jar" "java -jar bots/merv-v11.jar" --map_file tools/maps/random_walk/random_walk_02p_02.map --log_dir game_logs --turns 1000 --player_seed 7 --verbose -e

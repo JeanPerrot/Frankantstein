@@ -26,8 +26,18 @@ dependencies {
     compile('com.google.code.gson:gson:2.0')
 }
 
-jar {
+task completeJar(type: Jar, dependsOn: jar) {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { zipTree('build/libs/MyBotShort.jar')}
     baseName = 'MyBot'
+    manifest {
+        attributes("Main-Class": "MyBot")
+    }
+}
+
+
+jar {
+    baseName = 'MyBotShort'
     manifest {
         attributes("Main-Class": "MyBot")
     }
@@ -40,11 +50,11 @@ task srcZip(type: Zip) {
 }
 
 task rate(dependsOn: jar) << {
-    def bots = ["merv-v11", "MyBot-5", "merv-v3", "flightBot-v6"]
+    def bots = ["merv-v11","MyBot-8"]
     def maps = [
-            [name: "maze/maze_02p_02", maze: true, players: 2],
-            [name: "random_walk/random_walk_02p_01", random_walk: true, players: 2],
-            [name: "multi_hill_maze/maze_02p_01", multi_hill: true, maze: true, players: 2],
+//            [name: "maze/maze_02p_02", maze: true, players: 2],
+//            [name: "random_walk/random_walk_02p_01", random_walk: true, players: 2],
+//            [name: "multi_hill_maze/maze_02p_01", multi_hill: true, maze: true, players: 2],
             [name: "maze/maze_04p_01", maze: true, players: 4],
             [name: "random_walk/random_walk_04p_02", random_walk: true, players: 4],
             [name: "multi_hill_maze/maze_04p_01", multi_hill: true, maze: true, players: 4],

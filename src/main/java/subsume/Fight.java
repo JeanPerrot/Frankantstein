@@ -24,23 +24,44 @@ public class Fight extends Layer {
 
     private Decision pickDecision(FightState state) {
         CondensedResolver resolver = new CondensedResolver(state, isSuicideOk());
-        return resolver.resolve();
+        Decision resolve = resolver.resolve();
+        if (resolve.action == Decision.Action.DONTKNOW) {
+            if (areEnemiesNearby()) {
+                return Decision.STAY;
+            }
+        }
+        return resolve;
     }
 
     private boolean isSuicideOk() {
-        //TODO - suicide is not ok if I have companions nearby
-        if (areFriendsNearby()) {
+        //being more aggressive with friends around
+        if (countFriendsNearby() > 10) {
             return true;
         }
 
         return false;
     }
 
-    private boolean areFriendsNearby() {
+    private int countFriendsNearby() {
+        int count = 0;
         for (Tile tile : this.ant.ants.getAttackOffsets()) {
             if (tile.equals(ant.getTile())) continue;
             if (ant.getWorldMap().getIlk(tile.getRow(), tile.getCol()).equals(Ilk.MY_ANT)) {
-                return true;
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean areEnemiesNearby() {
+        HeatMap enemiesHeat = getEnemiesHeat();
+        int expRadius = 4;
+        for (int i = -expRadius; i < expRadius; i++) {
+            for (int j = -expRadius; j < expRadius; j++) {
+                int exposure = enemiesHeat.exposure(ant.tile.getRow() + i, ant.getTile().getCol() + j);
+                if (exposure > 0) {
+                    return true;
+                }
             }
         }
         return false;

@@ -1,5 +1,7 @@
 package ants;
 
+import com.sun.tools.internal.ws.wsdl.document.WSDLDocumentVisitorBase;
+import map.WayPointMap;
 import map.WorldMap;
 import util.Print;
 
@@ -40,6 +42,8 @@ public class Ants {
     //    private final Ilk map[][];
     private WorldMap map;
 
+    private WayPointMap wayPointMap;
+
     private final Set<Tile> myAnts = new HashSet<Tile>();
 
     private final Set<Tile> enemyAnts = new HashSet<Tile>();
@@ -78,6 +82,7 @@ public class Ants {
         this.attackRadius2 = attackRadius2;
         this.spawnRadius2 = spawnRadius2;
         map = new WorldMap(rows, cols);
+        wayPointMap=new WayPointMap(map,this);
 
         visible = new boolean[rows][cols];
         for (boolean[] row : visible) {
@@ -593,4 +598,7 @@ public class Ants {
     }
 
 
+    public WayPointMap getWaypointMap() {
+        return wayPointMap;
+    }
 }

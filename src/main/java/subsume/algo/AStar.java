@@ -136,7 +136,7 @@ public class AStar {
 
     private int score(Tile tile) {
         if (!map.getIlk(tile.getRow(), tile.getCol()).isPassable()) return 100000;
-//        if (!map.isExplored(tile.getRow(),tile.getCol())) return 10;
+//        if (!map.isExplored(waypoint.getRow(),waypoint.getCol())) return 10;
         return 1;
     }
 

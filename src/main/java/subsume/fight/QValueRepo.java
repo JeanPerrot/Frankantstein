@@ -13,7 +13,6 @@ public class QValueRepo {
 
     private Map<CondensedState, Map<Decision, Double>> repo = new HashMap<CondensedState, Map<Decision, Double>>();
 
-    private Gson gson=new Gson();
 
     public Double getValue(CondensedState state, Decision decision) {
         Map<Decision, Double> valuesMap = repo.get(state);
@@ -37,7 +36,7 @@ public class QValueRepo {
         valuesMap.put(decision, value);
 
         //TODO value and decision
-        Print.println(gson.toJson(new LearningTuple(state,value,decision)));
+//        Print.debug(gson.toJson(new LearningTuple(state,value,decision)));
     }
 
 
@@ -75,39 +74,6 @@ public class QValueRepo {
         }
     }
 
-    private static class LearningTuple{
-        private CondensedState state;
-        private Double reward;
-        private Decision decision;
 
-        private LearningTuple(CondensedState state, Double reward, Decision decision) {
-            this.state = state;
-            this.reward = reward;
-            this.decision = decision;
-        }
 
-        public CondensedState getState() {
-            return state;
-        }
-
-        public void setState(CondensedState state) {
-            this.state = state;
-        }
-
-        public Double getReward() {
-            return reward;
-        }
-
-        public void setReward(Double reward) {
-            this.reward = reward;
-        }
-
-        public Decision getDecision() {
-            return decision;
-        }
-
-        public void setDecision(Decision decision) {
-            this.decision = decision;
-        }
-    }
-}
+   }

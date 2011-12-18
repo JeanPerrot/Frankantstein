@@ -29,7 +29,7 @@ public class Reward {
 
     private static boolean wasInFight(Ant ant) {
         //an ant died nearby OR there are enemies in sight
-        for (Tile tile : ant.ants.getVisionOffsets()) {
+        for (Tile tile : ant.ants.getAttackOffsets()) {
             Ilk ilk = ant.getWorldMap().getIlk(ant.getTile().getRow()+tile.getRow(), ant.getTile().getCol()+tile.getCol());
             if (ilk.equals(Ilk.DEAD)) {
                 return true;
@@ -43,7 +43,7 @@ public class Reward {
 
     private static Double differentialDeaths(Ant ant, AntMap lastTurn) {
         int retValue = 0;
-        for (Tile tile : ant.ants.getVisionOffsets()) {
+        for (Tile tile : ant.ants.getAttackOffsets()) {
             int row = ant.getTile().getRow() + tile.getRow();
             int col = ant.getTile().getCol() + tile.getCol();
             Ilk ilk = ant.getWorldMap().getIlk(row, col);

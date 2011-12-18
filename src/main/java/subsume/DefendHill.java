@@ -35,6 +35,9 @@ public class DefendHill extends Layer {
             return Decision.DONTKNOW;
         }
         if (defending) {
+            if (areEnemiesVisible()) {
+                return Decision.DONTKNOW;
+            }
             Aim aim = findPath(ant.tile, defenseSpot);
             if (aim == null) {
                 return Decision.STAY;
@@ -58,6 +61,17 @@ public class DefendHill extends Layer {
         //stop defending if we dont have enough ants
         return (defenders > getDesiredDefenders());
     }
+
+    private boolean areEnemiesVisible() {
+        for (Tile tile : this.ant.ants.getVisionOffsets()) {
+            if (tile.equals(ant.getTile())) continue;
+            if (ant.getWorldMap().getIlk(tile.getRow(), tile.getCol()).equals(Ilk.ENEMY_ANT)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private Tile getDefenseSpot() {
         Tile myHill = getMyHill();

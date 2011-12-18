@@ -1,5 +1,6 @@
 package ants;
 
+import java.net.NoRouteToHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,8 +71,13 @@ public enum Aim {
     }
 
     //otherAim is using this Aim as a referential, seeing it as 'NORTH'. give the true aim.
+    //north.rotate() does nothing. east.rotate() turns one clockwise, etc.
     public Aim rotate(Aim otherAim){
         return otherAim.turn(index);
+    }
+    
+    public Aim counterRotate(Aim otherAim){
+        return otherAim.turn(-index);
     }
 
 

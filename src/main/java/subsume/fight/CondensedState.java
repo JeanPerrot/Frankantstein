@@ -41,7 +41,10 @@ public class CondensedState {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         CondensedState that = (CondensedState) o;
+
+        if (!Arrays.equals(land, that.land)) return false;
         if (!Arrays.equals(state, that.state)) return false;
 
         return true;
@@ -49,7 +52,9 @@ public class CondensedState {
 
     @Override
     public int hashCode() {
-        return state != null ? Arrays.hashCode(state) : 0;
+        int result = land != null ? Arrays.hashCode(land) : 0;
+        result = 31 * result + (state != null ? Arrays.hashCode(state) : 0);
+        return result;
     }
 
     public char[] asChars() {
@@ -73,7 +78,11 @@ public class CondensedState {
         return "CondensedState{" +
                 "aim=" + aim +
                 ", state=" + new String(state) +
-                ", land=" + land +
+                ", land=" + toString(land) +
                 '}';
+    }
+
+    private String toString(boolean[] land) {
+        return "["+land[0]+","+land[1]+","+land[2]+","+land[3]+"]";
     }
 }

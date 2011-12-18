@@ -2,30 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8105562-6f15-4189-9fa4-26585900adec" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tools/maps/dojo3.map" afterPath="$PROJECT_DIR$/tools/maps/dojo/dojo3.map" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyBot-6.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ants.iws" afterPath="$PROJECT_DIR$/ants.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dojo.sh" afterPath="$PROJECT_DIR$/dojo.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maze.sh" afterPath="$PROJECT_DIR$/maze.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/open.sh" afterPath="$PROJECT_DIR$/open.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/MyBot.java" afterPath="$PROJECT_DIR$/src/main/java/MyBot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ants/Aim.java" afterPath="$PROJECT_DIR$/src/main/java/ants/Aim.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ants/Ants.java" afterPath="$PROJECT_DIR$/src/main/java/ants/Ants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/map/UnExploredMap.java" afterPath="$PROJECT_DIR$/src/main/java/map/UnExploredMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Ant.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Ant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/DefendHill.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/DefendHill.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Explore.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Explore.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Fight.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Fight.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/Layer.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/Layer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/algo/AStar.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/algo/AStar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/Decider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/FightState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" afterPath="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Util.java" afterPath="$PROJECT_DIR$/src/test/java/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/Print.java" afterPath="$PROJECT_DIR$/src/main/java/util/Print.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/Rotate.java" afterPath="$PROJECT_DIR$/src/main/java/util/Rotate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/input.txt" afterPath="$PROJECT_DIR$/src/test/java/input.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tutorial.sh" afterPath="$PROJECT_DIR$/tutorial.sh" />
     </list>
     <ignored path="ants.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +35,6 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-    <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -57,12 +53,12 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </exception_breakpoints>
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/AbstractSystemInputParser.java" line="155" class="AbstractSystemInputParser" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/ants/Aim.java" line="79" class="ants.Aim" package="ants">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -72,21 +68,8 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/Bot.java" line="86" class="Bot" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
@@ -102,8 +85,8 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -117,8 +100,8 @@
         <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
@@ -146,82 +129,106 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MyBot.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/MyBot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="25" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reward.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ants.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ants/Ants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="446" column="72" selection-start="12306" selection-end="12306" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Ant.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="195" column="29" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
+            <state line="83" column="41" selection-start="2387" selection-end="2387" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fight.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
+      <file leaf-file-name="AttackDistantHill.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/AttackDistantHill.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="22" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0">
+            <state line="16" column="83" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QLearning.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java">
+      <file leaf-file-name="ModifiedWayPointAStar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedWayPointAStar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="17" selection-start="1217" selection-end="1217" vertical-scroll-proportion="0.0">
+            <state line="17" column="124" selection-start="372" selection-end="372" vertical-scroll-proportion="-4.0384617">
+              <folding>
+                <element signature="e#640#656#0" expanded="true" />
+                <element signature="e#720#740#0" expanded="true" />
+                <element signature="e#791#801#0" expanded="true" />
+                <element signature="e#4451#4461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Explore.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Explore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="79" column="50" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.6856725">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QValueRepo.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java">
+      <file leaf-file-name="WayPointMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/map/WayPointMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="72" selection-start="1243" selection-end="1243" vertical-scroll-proportion="0.76501304">
+            <state line="80" column="31" selection-start="2501" selection-end="2501" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#358#368#0" expanded="true" />
+                <element signature="e#434#455#0" expanded="true" />
+                <element signature="e#984#994#0" expanded="true" />
+                <element signature="e#2164#2170#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WayPoint.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/map/WayPoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="21" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#224#230#0" expanded="true" />
+                <element signature="e#295#314#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefendHill.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/DefendHill.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="76" column="53" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CondensedState.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java">
+      <file leaf-file-name="ModifiedAStar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="58" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0">
+            <state line="49" column="50" selection-start="0" selection-end="7666" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/classes.jar!/java/util/Map.class">
+      <file leaf-file-name="AStar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/AStar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="6" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+            <state line="149" column="5" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Layer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Layer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="26" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -241,22 +248,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/subsume/Fight.java" />
-        <option value="$PROJECT_DIR$/multi.sh" />
-        <option value="$PROJECT_DIR$/multi8.sh" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/Ant.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/FightHeuristics.java" />
-        <option value="$PROJECT_DIR$/dojo.sh" />
         <option value="$PROJECT_DIR$/src/main/java/MyBot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/Layer.java" />
+        <option value="$PROJECT_DIR$/open.sh" />
+        <option value="$PROJECT_DIR$/tools/maps/random_walk/random_walk_02p_02.map" />
         <option value="$PROJECT_DIR$/src/test/java/input.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ants/Ants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/Ant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ants/Ants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/DefendHill.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/Fight.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/algo/WayPointAStar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/map/WayPointMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/map/WayPoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedWayPointAStar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/subsume/Explore.java" />
       </list>
     </option>
   </component>
@@ -266,6 +273,12 @@
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="65" />
+    <option name="y" value="22" />
+    <option name="width" value="1375" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -283,7 +296,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -299,6 +312,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,7 +341,87 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="random_walk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groovy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -348,10 +442,109 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subsume" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subsume" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ants" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bots" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -434,6 +627,57 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="parseAntLog" type="GroovyScriptRunConfiguration" factoryName="Groovy Script" temporary="true">
+      <module name="ants" />
+      <setting name="path" value="$PROJECT_DIR$/src/test/groovy/parseAntLog.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$/src/test/groovy" />
+      <setting name="debug" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Cipher" type="GroovyScriptRunConfiguration" factoryName="Groovy Script" temporary="true">
+      <module name="ants" />
+      <setting name="path" value="$PROJECT_DIR$/src/test/groovy/Cipher.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$/src/test/groovy" />
+      <setting name="debug" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Cipher2" type="GroovyScriptRunConfiguration" factoryName="Groovy Script" temporary="true">
+      <module name="ants" />
+      <setting name="path" value="$PROJECT_DIR$/src/test/groovy/Cipher2.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$/src/test/groovy" />
+      <setting name="debug" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -510,9 +754,26 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="2">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy Script">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.MyBot" />
       <item index="1" class="java.lang.String" itemvalue="Application.Util" />
+      <item index="2" class="java.lang.String" itemvalue="Groovy Script.parseAntLog" />
+      <item index="3" class="java.lang.String" itemvalue="Groovy Script.Cipher" />
+      <item index="4" class="java.lang.String" itemvalue="Groovy Script.Cipher2" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -567,29 +828,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="22" width="1375" height="878" extended-state="6" />
+    <frame x="65" y="22" width="1375" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30921054" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30921054" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35836628" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41710526" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4334651" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3618421" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3778626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3778626" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.54210526" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45789474" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51646906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26375282" sideWeight="0.64163375" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24943481" sideWeight="0.5059289" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42274678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3394737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945927" sideWeight="0.6145038" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -615,6 +881,12 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
@@ -638,112 +910,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dojo.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedResolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="52" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+        <state line="33" column="20" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ants/Tile.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/HeatMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/map/WorldMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="973" selection-end="973" vertical-scroll-proportion="-4.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="0" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-4.9615383">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AbstractSystemInputParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="47" selection-start="149" selection-end="149" vertical-scroll-proportion="0.4710145" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="43" selection-start="129" selection-end="129" vertical-scroll-proportion="-1.6295265">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MyBot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="25" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/Reward.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ants/Ants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="446" column="72" selection-start="12306" selection-end="12306" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="29" selection-start="5661" selection-end="5661" vertical-scroll-proportion="0.0">
+        <state line="83" column="15" selection-start="2351" selection-end="2351" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Fight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="22" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0">
+        <state line="66" column="97" selection-start="1836" selection-end="1836" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QLearning.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/CostMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="17" selection-start="1217" selection-end="1217" vertical-scroll-proportion="0.0">
+        <state line="31" column="31" selection-start="714" selection-end="714" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/CondensedState.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/ExploreMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="58" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0">
+        <state line="15" column="35" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/classes.jar!/java/util/Map.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/UnExploredMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="6" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+        <state line="46" column="11" selection-start="1213" selection-end="1213" vertical-scroll-proportion="-13.038462">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/fight/QValueRepo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Layer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="72" selection-start="1243" selection-end="1243" vertical-scroll-proportion="0.76501304">
+        <state line="15" column="26" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="41" selection-start="2387" selection-end="2387" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/AStar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="5" selection-start="4827" selection-end="4827" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedAStar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="50" selection-start="0" selection-end="7666" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/DefendHill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="53" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/WayPointMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="31" selection-start="2501" selection-end="2501" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#358#368#0" expanded="true" />
+            <element signature="e#434#455#0" expanded="true" />
+            <element signature="e#984#994#0" expanded="true" />
+            <element signature="e#2164#2170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/map/WayPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="21" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#224#230#0" expanded="true" />
+            <element signature="e#295#314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/AttackDistantHill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="83" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/algo/ModifiedWayPointAStar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="124" selection-start="372" selection-end="372" vertical-scroll-proportion="-4.0384617">
+          <folding>
+            <element signature="e#640#656#0" expanded="true" />
+            <element signature="e#720#740#0" expanded="true" />
+            <element signature="e#791#801#0" expanded="true" />
+            <element signature="e#4451#4461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/subsume/Explore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="50" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.6856725">
           <folding />
         </state>
       </provider>
@@ -766,7 +1055,7 @@
       <state key="Copyright.UI" />
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -807,7 +1096,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

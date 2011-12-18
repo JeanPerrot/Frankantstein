@@ -23,7 +23,7 @@ public class CondensedResolver {
         CondensedState inAim = state.getDirectionalState(aim);
 
         DirectionalDecisions decisionsInAim = decider.decide(inAim);
-        Print.println(decisionsInAim.toString());
+//        Print.println(decisionsInAim.toString());
 
         decisionsInAim.rotate();
         decisions.put(aim, decisionsInAim);

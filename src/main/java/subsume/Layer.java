@@ -17,9 +17,9 @@ public abstract class Layer {
         long time=System.nanoTime();
         lastDecision=output();
         long elapsed = (System.nanoTime() - time)/1000;
-        if (elapsed>10000)
+        if (elapsed>3000)
         {
-            Print.debug(this.getClass().getSimpleName() + " took " + elapsed + "micros");
+            Print.println(this.getClass().getSimpleName() + " took " + elapsed + "micros");
         }
         return lastDecision;
     }

@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Ant {
     private static int ID = 0;
-    public static boolean reinforcementLearning = true;
+    public static boolean reinforcementLearning = false;
 
 
     int id = ID++;
@@ -60,7 +60,11 @@ public class Ant {
         }
 
         cleanDecisions();
+        updateWayPointMap();
+
         currentDecision = defendHill.decide();
+
+        //TODO - attack undefended hill...
 
         if (currentDecision.dontKnow()) {
             currentDecision = seekFood.decide();
@@ -97,6 +101,10 @@ public class Ant {
         markNextLocation();
         explain();
         return currentDecision.aim;
+    }
+
+    private void updateWayPointMap() {
+        ants.getWaypointMap().visit(this.getTile());
     }
 
     private void cleanDecisions() {

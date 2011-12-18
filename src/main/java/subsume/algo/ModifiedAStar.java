@@ -9,7 +9,7 @@ import java.util.*;
 
 
 /**
- * given a cost map, will use any tile with cost zero as having converged. ie the first path that hits a tile with
+ * given a cost map, will use any waypoint with cost zero as having converged. ie the first path that hits a waypoint with
  * cost zero will be returned.
  */
 public class ModifiedAStar {

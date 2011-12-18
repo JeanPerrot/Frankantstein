@@ -12,7 +12,7 @@ import java.util.List;
 public class Explore extends Layer {
 
     private Tile goal;
-    private int costLimit=50;
+    private int costLimit = 50;
     private GoalTracker exploreTrack = GoalTracker.getExploreTrack();
 
     public Explore(Ant ant) {
@@ -37,7 +37,7 @@ public class Explore extends Layer {
     }
 
     private void assignGoal() {
-        Print.println("assigning explore goal "+goal);
+        Print.println("assigning explore goal " + goal);
         exploreTrack.assign(goal, ant);
         CostMap.getExploreMap(ant.ants, exploreTrack).assign(goal);
     }
@@ -62,7 +62,7 @@ public class Explore extends Layer {
         }
         //cost map is going to be given by the WorldMap.
         CostMap map = CostMap.getExploreMap(ant.ants, GoalTracker.getExploreTrack());
-        ModifiedAStar.AppraisedPath path = new ModifiedAStar(map, ant.ants,costLimit).findPath(ant.tile);
+        ModifiedAStar.AppraisedPath path = new ModifiedAStar(map, ant.ants, costLimit).findPath(ant.tile);
         if (path == null) {
             return null;
         }
@@ -75,6 +75,17 @@ public class Explore extends Layer {
         return followPath(ant.tile, path.path);
 
     }
+
+    private Tile choseNewGoalTwo() {
+        if (ant.getWorldMap().allExplored()) {
+            Print.println("EVERYTHING WAS EXPLORED!");
+            return null;
+        }
+
+
+        return null;
+    }
+
 
     private Tile followPath(Tile tile, List<Aim> path) {
         Tile retValue = tile;

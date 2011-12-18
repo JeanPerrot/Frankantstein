@@ -10,7 +10,7 @@ public class Rotate {
 
     //rotate decisions made by the n-tile state knowing that they were really made in the aim
     public static Decision rotate(Decision decision, Aim aim) {
-        if (decision.dontKnow() || decision.stay()) {
+        if (decision.dontKnow() || decision.stay() || decision.aim == null) {
             return decision;
         }
         return Decision.move(aim.rotate(decision.aim));

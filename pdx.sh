@@ -1,0 +1,1 @@
+./tcpclient.py a.comp.ohess.org 2081 "java -jar bots/MyBot-8q.jar" Jean_MyBot_8 Jean 1000
