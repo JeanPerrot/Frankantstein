@@ -31,7 +31,7 @@ public class AttackDistantHill extends GoalSeek {
 //            goal = null;
 //            return;
 //        }
-        if (5*ant.ants.getMyAnts().size() < ant.ants.getDistance(ant.tile, closestHill)) {
+        if (5 * ant.ants.getMyAnts().size() < ant.ants.getDistance(ant.tile, closestHill)) {
             potentialGoals = new ArrayList<Tile>();
             goal = null;
             return;

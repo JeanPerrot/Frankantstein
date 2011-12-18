@@ -77,9 +77,9 @@ public class Ant {
             currentDecision = attackHill.decide();
         }
         // this is improved, but to use it we need a competent enemy-aware strategy
-//        if (currentDecision.dontKnow()) {
-//            currentDecision = attackDistantHill.decide();
-//        }
+        if (currentDecision.dontKnow()) {
+            currentDecision = attackDistantHill.decide();
+        }
         if (currentDecision.dontKnow()) {
             currentDecision = explore.decide();
         }

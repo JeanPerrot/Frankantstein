@@ -57,6 +57,7 @@ public class WayPointMap {
             }
             wayPoints.add(newWayPoint);
         }
+        this.waypoints.add(newWayPoint);
     }
 
     private int getDistanceBetween(WayPoint newWayPoint, WayPoint canReachPoint) {
@@ -73,9 +74,31 @@ public class WayPointMap {
                 retValue.add(tile);
             }
         };
-        trueWalk.nearWalk(tile, radius+1, action);
+        trueWalk.nearWalk(tile, radius + 1, action);
         return retValue;
     }
 
+    private boolean isBorder(WayPoint wayPoint) {
+        int mx = radius + 1;
+        for (int row = -mx; row <= mx; ++row) {
+            for (int col = -mx; col <= mx; ++col) {
+                if (!map.isExplored(row, col)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
+
+    public Set<WayPoint> getBorder() {
+        //brute force
+        Set<WayPoint> retValue = new HashSet<WayPoint>();
+        for (WayPoint wayPoint : waypoints) {
+            if (isBorder(wayPoint)) {
+                retValue.add(wayPoint);
+            }
+        }
+        return retValue;
+    }
 }

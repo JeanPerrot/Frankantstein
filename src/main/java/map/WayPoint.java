@@ -41,6 +41,7 @@ public class WayPoint {
     public Set<WayPoint> getConnections() {
         return connections.keySet();
     }
+    
 
     @Override
     public boolean equals(Object o) {

@@ -3,11 +3,15 @@ package subsume;
 import ants.Aim;
 import ants.Tile;
 import map.CostMap;
+import map.WayPoint;
+import map.WayPointMap;
 import subsume.algo.AStar;
 import subsume.algo.ModifiedAStar;
+import subsume.algo.ModifiedWayPointAStar;
 import util.Print;
 
 import java.util.List;
+import java.util.Set;
 
 public class Explore extends Layer {
 
@@ -83,7 +87,24 @@ public class Explore extends Layer {
         }
 
 
-        return null;
+        WayPointMap waypointMap = ant.ants.getWaypointMap();
+        final Set<WayPoint> border = waypointMap.getBorder();
+        ModifiedWayPointAStar.EndCondition endCondition = new ModifiedWayPointAStar.EndCondition() {
+            @Override
+            public boolean goalReached(WayPoint waypoint) {
+                return border.contains(waypoint);
+            }
+        };
+        ModifiedWayPointAStar modifiedWayPointAStar = new ModifiedWayPointAStar(waypointMap, ant.ants, 30, endCondition);
+
+        //get closest waypoint...
+        //TODO
+        WayPoint closePoint = null;
+        List<WayPoint> path = modifiedWayPointAStar.findPath(closePoint);
+        if (path.isEmpty()) {
+            return null;
+        }
+        return path.get(path.size() - 1).getCenter();
     }
 
 

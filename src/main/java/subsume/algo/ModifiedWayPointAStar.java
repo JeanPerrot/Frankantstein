@@ -187,7 +187,7 @@ public class ModifiedWayPointAStar {
     }
 
 
-    static interface EndCondition {
+    public static interface EndCondition {
         boolean goalReached(WayPoint waypoint);
     }
 
