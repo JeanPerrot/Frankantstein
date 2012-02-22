@@ -13,9 +13,12 @@ public class DefendHill extends Layer {
     private boolean defending = false;
     private Tile defenseSpot;
 
+    private Fight fight;
+
 
     public DefendHill(Ant ant) {
         super(ant);
+        fight = new Fight(ant);
     }
 
     @Override
@@ -36,8 +39,12 @@ public class DefendHill extends Layer {
         }
         if (defending) {
             if (areEnemiesVisible()) {
-                return Decision.DONTKNOW;
+                Decision fightDecision = fight.output();
+                if (!fightDecision.equals(Decision.DONTKNOW)) {
+                    return fightDecision;
+                }
             }
+
             Aim aim = findPath(ant.tile, defenseSpot);
             if (aim == null) {
                 return Decision.STAY;

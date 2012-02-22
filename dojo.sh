@@ -1,1 +1,1 @@
-python tools/playgame.py "java -jar bots/merv-v11.jar" "java -jar build/libs/MyBot.jar" --map_file tools/maps/dojo/dojo3.map --log_dir game_logs --turns 1000 --player_seed 7 --verbose -e --scenario --food none --turns 100
+python tools/playgame.py "java -jar bots/MyBot-8.jar" "java -jar build/libs/MyBot.jar" --map_file tools/maps/dojo/dojo10.map --log_dir game_logs --turns 1000 --player_seed 7 --verbose -e --scenario --food none --turns 100

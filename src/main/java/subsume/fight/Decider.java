@@ -35,7 +35,7 @@ public class Decider {
     //apply greedy policy or random choice
     public DirectionalDecisions decide(CondensedState inAim) {
 //        return decideReinforcementLearning(inAim);
-        return new FightHeuristics(inAim).applyPolicy(suicideOk);
+        return new NewFightHeuristics(inAim).applyPolicy(suicideOk);
     }
 
 

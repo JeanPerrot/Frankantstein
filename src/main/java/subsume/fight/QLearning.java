@@ -1,14 +1,8 @@
 package subsume.fight;
 
 import ants.Aim;
-import com.google.gson.Gson;
 import subsume.Decision;
-import util.Print;
 import util.Rotate;
-
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Logger;
 
 /**
  * the meat of the q-learning algo
@@ -16,7 +10,7 @@ import java.util.logging.Logger;
 public class QLearning {
 
     private QValueRepo repo = new QValueRepo();
-    private Gson gson = new Gson();
+//    private Gson gson = new Gson();
 
 
     private Double learningRate = 0.5;
@@ -35,7 +29,7 @@ public class QLearning {
     }
 
     private void learn(CondensedState directionalState, Decision rotated, Double reward) {
-        Print.log(gson.toJson(new LearningTuple(directionalState, reward, rotated)));
+//        Print.log(gson.toJson(new LearningTuple(directionalState, reward, rotated)));
 
 //        Double existing = repo.getValue(directionalState, rotated);
 //        Map<Double, Set<Decision>> bestDecisions = repo.getBestDecisions(directionalState);

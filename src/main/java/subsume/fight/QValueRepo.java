@@ -1,8 +1,6 @@
 package subsume.fight;
 
-import com.google.gson.Gson;
 import subsume.Decision;
-import util.Print;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

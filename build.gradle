@@ -28,8 +28,8 @@ dependencies {
 
 task completeJar(type: Jar, dependsOn: jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    from { zipTree('build/libs/MyBotShort.jar')}
-    baseName = 'MyBot'
+    from { zipTree('build/libs/MyBot.jar')}
+    baseName = 'MyBotLong'
     manifest {
         attributes("Main-Class": "MyBot")
     }
@@ -37,7 +37,7 @@ task completeJar(type: Jar, dependsOn: jar) {
 
 
 jar {
-    baseName = 'MyBotShort'
+    baseName = 'MyBot'
     manifest {
         attributes("Main-Class": "MyBot")
     }
@@ -50,7 +50,7 @@ task srcZip(type: Zip) {
 }
 
 task rate(dependsOn: jar) << {
-    def bots = ["merv-v11","MyBot-8"]
+    def bots = ["MyBot-8"]
     def maps = [
 //            [name: "maze/maze_02p_02", maze: true, players: 2],
 //            [name: "random_walk/random_walk_02p_01", random_walk: true, players: 2],

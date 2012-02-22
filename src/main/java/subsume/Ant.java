@@ -23,7 +23,7 @@ public class Ant {
     Decision currentDecision;
     AntMap nextTurn;
 
-    Fight fight = new Fight(this);
+    NewFight fight = new NewFight(this);
     Layer defendHill = new DefendHill(this);
     Layer attackHill = new AttackCloseHill(this);
     Layer seekFood = new SeekFood(this);
@@ -64,8 +64,6 @@ public class Ant {
 
         currentDecision = defendHill.decide();
 
-        //TODO - attack undefended hill...
-
         if (currentDecision.dontKnow()) {
             currentDecision = seekFood.decide();
         }
@@ -76,7 +74,6 @@ public class Ant {
         if (currentDecision.dontKnow()) {
             currentDecision = attackHill.decide();
         }
-        // this is improved, but to use it we need a competent enemy-aware strategy
         if (currentDecision.dontKnow()) {
             currentDecision = attackDistantHill.decide();
         }
@@ -202,5 +199,22 @@ public class Ant {
 
     public FightState getLastFightState() {
         return fight.getLastState();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ant ant = (Ant) o;
+
+        if (id != ant.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

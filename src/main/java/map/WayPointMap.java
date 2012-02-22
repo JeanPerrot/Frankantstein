@@ -5,17 +5,16 @@ import ants.Tile;
 import subsume.algo.AStar;
 import subsume.algo.TrueWalk;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class WayPointMap {
-    private int radius = 7;
+    private int radius = 8;
     private WorldMap map;
     private Ants ants;
     private Set<WayPoint> waypoints = new HashSet<WayPoint>();
     private Map<Tile, Set<WayPoint>> wayPointMap = new HashMap<Tile, Set<WayPoint>>();
+    private Set<WayPoint> nonBorder = new HashSet<WayPoint>();
+    private Set<WayPoint> uncheckedBorder = new HashSet<WayPoint>();
 
     public WayPointMap(WorldMap map, Ants ants) {
         this.map = map;
@@ -36,13 +35,18 @@ public class WayPointMap {
         //connect to other waypoints
         Set<WayPoint> connected = new HashSet<WayPoint>();
         for (Tile canReach : reachable) {
-            for (WayPoint canReachPoint : wayPointMap.get(canReach)) {
+            Set<WayPoint> wayPoints = wayPointMap.get(canReach);
+            if (wayPoints == null) {
+                continue;
+            }
+            for (WayPoint canReachPoint : wayPoints) {
                 if (connected.contains(canReachPoint)) {
                     continue;
                 }
                 connected.add(canReachPoint);
                 int distance = getDistanceBetween(newWayPoint, canReachPoint);
                 newWayPoint.connect(canReachPoint, distance);
+                canReachPoint.connect(newWayPoint, distance);
             }
         }
         updateMap(newWayPoint);
@@ -58,6 +62,9 @@ public class WayPointMap {
             wayPoints.add(newWayPoint);
         }
         this.waypoints.add(newWayPoint);
+        uncheckedBorder = new HashSet<WayPoint>(waypoints);
+        uncheckedBorder.removeAll(nonBorder);
+
     }
 
     private int getDistanceBetween(WayPoint newWayPoint, WayPoint canReachPoint) {
@@ -67,11 +74,17 @@ public class WayPointMap {
 
     private Set<Tile> getReachableFrom(Tile tile) {
         final Set<Tile> retValue = new HashSet<Tile>();
+        Set<Tile> offsets = ants.getVisionOffsets();
+        final Set<Tile> visible = new HashSet<Tile>();
+        for (Tile offset : offsets) {
+            visible.add(ants.getTile(tile, offset));
+        }
         TrueWalk trueWalk = new TrueWalk(map);
         TrueWalk.Action action = new TrueWalk.Action() {
             @Override
             public void perform(Tile tile, int cost) {
-                retValue.add(tile);
+                if (visible.contains(tile))
+                    retValue.add(tile);
             }
         };
         trueWalk.nearWalk(tile, radius + 1, action);
@@ -79,15 +92,33 @@ public class WayPointMap {
     }
 
     private boolean isBorder(WayPoint wayPoint) {
-        int mx = radius + 1;
-        for (int row = -mx; row <= mx; ++row) {
-            for (int col = -mx; col <= mx; ++col) {
-                if (!map.isExplored(row, col)) {
-                    return true;
+        if (nonBorder.contains(wayPoint)) {
+            return false;
+        }
+        if (!uncheckedBorder.contains(wayPoint)) {
+            return true;
+        }
+        boolean retValue = checkIsBorder(wayPoint);
+        if (!retValue) {
+            nonBorder.add(wayPoint);
+        }
+        uncheckedBorder.remove(wayPoint);
+        return retValue;
+    }
+
+    private boolean checkIsBorder(WayPoint wayPoint) {
+        final List<Tile> unexplore = new ArrayList<Tile>();
+        final TrueWalk trueWalk = new TrueWalk(map);
+        trueWalk.nearWalk(wayPoint.getCenter(), radius * 2, new TrueWalk.Action() {
+            @Override
+            public void perform(Tile tile, int cost) {
+                if (!map.isExplored(tile.getRow(), tile.getCol())) {
+                    unexplore.add(tile);
+                    trueWalk.stop();
                 }
             }
-        }
-        return false;
+        });
+        return !unexplore.isEmpty();
     }
 
 
@@ -101,4 +132,18 @@ public class WayPointMap {
         }
         return retValue;
     }
+
+    public Set<WayPoint> getWayPoints(Tile tile) {
+        return wayPointMap.get(tile);
+    }
+
+    public boolean isAtBorder(Tile tile) {
+        for (WayPoint wayPoint : getWayPoints(tile)) {
+            if (isBorder(wayPoint)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

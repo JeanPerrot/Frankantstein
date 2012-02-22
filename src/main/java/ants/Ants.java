@@ -1,9 +1,7 @@
 package ants;
 
-import com.sun.tools.internal.ws.wsdl.document.WSDLDocumentVisitorBase;
 import map.WayPointMap;
 import map.WorldMap;
-import util.Print;
 
 import java.util.*;
 
@@ -601,4 +599,8 @@ public class Ants {
     public WayPointMap getWaypointMap() {
         return wayPointMap;
     }
+
+
+    
+
 }

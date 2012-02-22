@@ -60,8 +60,8 @@ public class WorldMap {
     }
 
     public boolean isExplored(int row, int col) {
-        row = row % rows;
-        col = col % cols;
+        row = (row + rows) % rows;
+        col = (col + cols) % cols;
         return explored[row][col];
     }
 

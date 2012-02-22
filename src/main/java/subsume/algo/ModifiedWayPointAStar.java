@@ -30,7 +30,7 @@ public class ModifiedWayPointAStar {
 
     private int costLimit = 35;
 
-    public ModifiedWayPointAStar(WayPointMap map, Ants ants, int costLimit,EndCondition endCondition) {
+    public ModifiedWayPointAStar(WayPointMap map, Ants ants, int costLimit, EndCondition endCondition) {
         this.map = map;
         this.ants = ants;
         this.costLimit = costLimit;

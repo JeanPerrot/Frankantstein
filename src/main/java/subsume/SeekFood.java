@@ -28,7 +28,7 @@ public class SeekFood extends GoalSeek {
         Tile oldGoal=goal;
         goal = newGoal;
         potentialGoals = Arrays.asList(goal);
-        foodTracker.assign(oldGoal,null);
+        foodTracker.unassign(oldGoal,ant);
         foodTracker.assign(goal,ant);
     }
 

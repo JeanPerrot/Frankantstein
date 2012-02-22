@@ -8,22 +8,23 @@ import java.util.logging.SimpleFormatter;
 
 public class Print {
     private static Logger logger = Logger.getLogger("Print");
+    private static boolean debug = true;
 
     static{
         try {
             FileHandler fileHandler = new FileHandler("/Users/jperrot/github/fun/ants/ants/antLog.log",true);
             fileHandler.setFormatter(new SimpleFormatter());
             logger.addHandler(fileHandler);
-            log("printing to "+fileHandler.toString());
         } catch (IOException e) {
             logger=null;
         }
     }
 
-    private static boolean debug = true;
 
     public static void println(String str) {
-        System.err.println(str);
+        if (debug){
+            System.err.println(str);
+        }
     }
 
     public static void debug(String s) {

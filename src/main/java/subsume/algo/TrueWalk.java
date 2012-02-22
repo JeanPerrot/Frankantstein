@@ -10,6 +10,9 @@ public class TrueWalk {
 
     private WorldMap map;
 
+    private boolean stop = false;
+
+
     public TrueWalk(WorldMap map) {
         this.map = map;
     }
@@ -21,7 +24,7 @@ public class TrueWalk {
         frontier.add(new CostedTile(tile, initialCost));
         nonCostedFrontier.add(tile);
 
-        while (!frontier.isEmpty()) {
+        while (!frontier.isEmpty() && !stop) {
             CostedTile toVisit = frontier.last();
             frontier.remove(toVisit);
             nonCostedFrontier.remove(tile);
@@ -29,7 +32,7 @@ public class TrueWalk {
             if (!map.getIlk(toVisit.getRow(), toVisit.getCol()).isPassable()) {
                 continue;
             }
-            action.perform(toVisit,toVisit.cost);
+            action.perform(toVisit, toVisit.cost);
             if (toVisit.cost == 1) continue;
 
             for (Tile neighbor : getNeighbors(toVisit)) {
@@ -41,6 +44,10 @@ public class TrueWalk {
                 nonCostedFrontier.add(neighbor);
             }
         }
+    }
+
+    public void stop() {
+        stop = true;
     }
 
     private static class CostedTile extends Tile {
@@ -80,10 +87,9 @@ public class TrueWalk {
         return retValue;
     }
 
-    public static interface Action{
+    public static interface Action {
         void perform(Tile tile, int cost);
     }
-
 
 
 }

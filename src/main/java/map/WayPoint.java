@@ -59,4 +59,11 @@ public class WayPoint {
     public int hashCode() {
         return center != null ? center.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "WayPoint{" +
+                "center=" + center +
+                '}';
+    }
 }
